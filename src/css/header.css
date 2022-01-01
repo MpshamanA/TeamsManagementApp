@@ -1,0 +1,30 @@
+.top-hed {
+  height: 70px;
+  border-bottom: 4px solid rgb(20, 163, 96);
+  background-color: #ccffff;
+  border-image: linear-gradient(
+    to right,
+    rgb(20, 163, 96) 0%,
+    rgb(4, 154, 255) 100%
+  );
+  border-image-slice: 1;
+  width: 100%;
+}
+.title-name {
+  height: 70px;
+  display: flex;
+  align-items: center;
+}
+img {
+  display: block;
+}
+
+.img-logo {
+  width: 200px;
+}
+
+/*
+ロゴcolor
+rgb(20, 163, 96); 緑
+rgb(4, 154, 255); 青
+*/

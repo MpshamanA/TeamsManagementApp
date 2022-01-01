@@ -1,0 +1,74 @@
+.App {
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  text-align: center;
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+body {
+  min-height: 100vh; /* 高さの最小を画面いっぱいに設定 */
+  margin: 0; /* ブラウザのデフォルトのスタイルを解除 */
+}
+
+/* Flex Layout */
+.flex {
+  display: flex;
+}
+
+.flex-vertical {
+  flex-direction: column;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 画面サイズの横幅が960px以上である場合 */
+@media screen and (min-width: 960px) {
+  .content-body {
+    /* Flexで横並び */
+    flex-direction: row;
+  }
+
+  .content-body nav {
+    flex-basis: 100px; /* flex-basis（初期値）を指定 */
+  }
+
+  .content-body nav {
+    /* アイテムの表示順序 */
+    order: 1;
+  }
+}
+/*calendar*/

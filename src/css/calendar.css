@@ -1,0 +1,25 @@
+.m-40 {
+  margin: 40px;
+}
+.mh-100vh {
+  min-height: 100vh;
+}
+.w-100 {
+  min-width: 1000px;
+}
+
+/* 画面サイズの横幅が960px以上である場合 */
+@media screen and (min-width: 1500px) {
+  .w-100 {
+    min-width: 1350px;
+  }
+}
+@media screen and (max-width: 1310px) {
+  .w-100 {
+    min-width: 900px;
+  }
+  .content-body {
+    /* Flexで横並び */
+    flex-direction: row;
+  }
+}

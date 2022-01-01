@@ -1,0 +1,18 @@
+.inner {
+}
+.input-form {
+  background-color: #f9f3ee;
+  padding: 40px;
+}
+.input-form p {
+  margin: 0;
+}
+.input {
+  margin: 10px 10px 0 0;
+  width: 250px;
+  font-size: 15px;
+  outline: none;
+  border: solid 3px #d7d2cd;
+  padding: 7px;
+  border-radius: 7px;
+}

@@ -1,14 +1,30 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import Form from "./views/Form";
+import Test from "./views/Test";
+import Calendar from "./views/Calendar";
+import AvailableStores from "./views/AvailableStores";
+import reportWebVitals from "./reportWebVitals";
+import Qa from "./views/Qa";
+import { Route, BrowserRouter } from "react-router-dom";
 
+//routeの設定
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BrowserRouter>
+      <div>
+        <Route exact path="/" component={App} />
+        <Route exact path="/form" component={Form} />
+        <Route exact path="/test" component={Test} />
+        <Route exact path="/calendar" component={Calendar} />
+        <Route exact path="/availableStores" component={AvailableStores} />
+        <Route exact path="/qa" component={Qa} />
+      </div>
+    </BrowserRouter>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
