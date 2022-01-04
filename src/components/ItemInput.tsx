@@ -21,19 +21,6 @@ export const ItemInput: React.FC<Props> = ({
     setInputStore(e.target.value);
   };
 
-  //ここでaddStoreしないといけない
-  // const handleSubmit = () => {
-  //   setCount(count + 1);
-  //   const newStore: Store = {
-  //     id: count,
-  //     storeName: inputStore,
-  //     updateUser: "test",
-  //     updateTime: "2022/01/04",
-  //     done: false,
-  //   };
-  //   setStores([newStore, ...stores]);
-  //   setInputStore("");
-  // };
   return (
     //mapで回す場合keyは必須
     <div className="inner">
