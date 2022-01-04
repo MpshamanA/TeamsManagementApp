@@ -4,9 +4,11 @@ import { Store } from "../Type";
 
 type Props = {
   store: Store;
+  handleDone: (store: Store) => void;
+  handleDelete: (store: Store) => void;
 };
 
-export const Item: React.FC<Props> = ({ store }) => {
+export const Item: React.FC<Props> = ({ store, handleDone, handleDelete }) => {
   const [newStore, useNewStore] = useState("");
 
   return (
@@ -15,13 +17,16 @@ export const Item: React.FC<Props> = ({ store }) => {
         <input
           type="checkbox"
           className="checkbox-input"
+          onClick={() => handleDone(store)}
           defaultChecked={store.done}
         />
         <span className="checkbox-label">{store.storeName}</span>
       </label>
       <span>{store.updateUser}</span>
       <span>{store.updateTime}</span>
-      <button className="btn is-dalete">削除</button>
+      <button className="btn is-dalete" onClick={() => handleDelete}>
+        削除
+      </button>
     </li>
   );
 };

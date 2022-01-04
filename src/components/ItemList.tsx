@@ -4,8 +4,19 @@ import { Store } from "../Type";
 
 type Props = {
   stores: Store[];
+  setStores: React.Dispatch<React.SetStateAction<Store[]>>;
 };
-export const ItemList: React.FC<Props> = ({ stores }) => {
+export const ItemList: React.FC<Props> = ({ stores, setStores }) => {
+  const handleDone = (store: Store) => {
+    setStores((prev) =>
+      prev.map((s) => (s.id === store.id ? { ...store, done: !store.done } : s))
+    );
+  };
+
+  const handleDelete = (store: Store) => {
+    setStores((prev) => prev.filter((s) => s.id !== store.id));
+  };
+
   return (
     //mapで回す場合keyは必須
     <div className="inner">
@@ -15,7 +26,12 @@ export const ItemList: React.FC<Props> = ({ stores }) => {
       ) : (
         <ul>
           {stores.map((store) => (
-            <Item key={store.id} store={store} />
+            <Item
+              key={store.id}
+              store={store}
+              handleDone={handleDone}
+              handleDelete={handleDelete}
+            />
           ))}
         </ul>
       )}

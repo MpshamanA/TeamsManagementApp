@@ -4,16 +4,36 @@ import { Store } from "../Type";
 
 type Props = {
   stores: Store[];
-  setStores: React.Dispatch<React.SetStateAction<any[]>>;
+  setStores: React.Dispatch<React.SetStateAction<Store[]>>;
+  handleSubmit: () => void;
 };
 
 //値を親に渡してfirebaseに登録するロジックを作成する
-export const ItemInput: React.FC = () => {
+export const ItemInput: React.FC<Props> = ({
+  stores,
+  setStores,
+  handleSubmit,
+}) => {
   const [inputStore, setInputStore] = useState("");
-  const handoleSubmit = () => {};
+  const [count, setCount] = useState(stores.length + 1);
+
   const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputStore(e.target.value);
   };
+
+  //ここでaddStoreしないといけない
+  // const handleSubmit = () => {
+  //   setCount(count + 1);
+  //   const newStore: Store = {
+  //     id: count,
+  //     storeName: inputStore,
+  //     updateUser: "test",
+  //     updateTime: "2022/01/04",
+  //     done: false,
+  //   };
+  //   setStores([newStore, ...stores]);
+  //   setInputStore("");
+  // };
   return (
     //mapで回す場合keyは必須
     <div className="inner">
@@ -26,7 +46,7 @@ export const ItemInput: React.FC = () => {
             value={inputStore}
             onChange={hundleInputChange}
           />
-          <button className="btn is-primary" onClick={handoleSubmit}>
+          <button className="btn is-primary" onClick={handleSubmit}>
             追加
           </button>
         </div>
