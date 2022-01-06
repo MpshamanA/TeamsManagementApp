@@ -5,17 +5,22 @@ import { Store } from "../Type";
 type Props = {
   stores: Store[];
   setStores: React.Dispatch<React.SetStateAction<Store[]>>;
+  handleDelete: (n: number) => void;
 };
-export const ItemList: React.FC<Props> = ({ stores, setStores }) => {
+export const ItemList: React.FC<Props> = ({
+  stores,
+  setStores,
+  handleDelete,
+}) => {
   const handleDone = (store: Store) => {
     setStores((prev) =>
       prev.map((s) => (s.id === store.id ? { ...store, done: !store.done } : s))
     );
   };
 
-  const handleDelete = (store: Store) => {
-    setStores((prev) => prev.filter((s) => s.id !== store.id));
-  };
+  // const handleDelete = (store: Store) => {
+  //   setStores((prev) => prev.filter((s) => s.id !== store.id));
+  // };
 
   return (
     //mapで回す場合keyは必須
@@ -30,7 +35,7 @@ export const ItemList: React.FC<Props> = ({ stores, setStores }) => {
               key={store.id}
               store={store}
               handleDone={handleDone}
-              handleDelete={handleDelete}
+              handleDelete={() => handleDelete(store.id)}
             />
           ))}
         </ul>

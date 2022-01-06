@@ -3,11 +3,20 @@ import { Side } from "../components/Side";
 import { ItemList } from "../components/ItemList";
 import { ItemInput } from "../components/ItemInput";
 import "../css/AvailableStores.css";
-import { collection, getDocs, addDoc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import { db } from "../firebase";
+import { idText } from "typescript";
 
 const AvailableStores = () => {
   const [stores, setStores] = useState(Array());
+  //inputタグに入力されたデータ
+  const [inputStore, setInputStore] = useState("");
 
   const storesCollectionRef = collection(db, "Stores");
 
@@ -19,13 +28,23 @@ const AvailableStores = () => {
     GetStores();
   }, []);
 
-  //登録は
-  // const handleSubmit = async () => {
-  //   addDoc(storesCollectionRef, {});
-  // };
-  //追加ボタンを押された際のメソッド
-  const handleSubmit = () => {
-    console.log("testSubmit");
+  //fireBaseにデータを追加する
+  const handleSubmit = async () => {
+    await addDoc(storesCollectionRef, {
+      id: stores.length + 1,
+      storeName: inputStore,
+      updateUser: "test",
+      updateTime: "20220106",
+      done: false,
+    });
+  };
+  const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputStore(e.target.value);
+  };
+  //firebaseのデータを削除
+  const handleDelete = async (id: any) => {
+    const storeDoc = doc(db, "Stores", id);
+    await deleteDoc(storeDoc);
   };
 
   return (
@@ -35,10 +54,16 @@ const AvailableStores = () => {
         <div className="min-w-100">
           <ItemInput
             stores={stores}
-            setStores={setStores}
+            inputStore={inputStore}
+            setInputStore={setInputStore}
             handleSubmit={handleSubmit}
+            hundleInputChange={hundleInputChange}
           />
-          <ItemList stores={stores} setStores={setStores} />
+          <ItemList
+            stores={stores}
+            setStores={setStores}
+            handleDelete={handleDelete}
+          />
         </div>
       </div>
     </div>

@@ -4,22 +4,26 @@ import { Store } from "../Type";
 
 type Props = {
   stores: Store[];
-  setStores: React.Dispatch<React.SetStateAction<Store[]>>;
+  inputStore: string;
+  setInputStore: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: () => void;
+  hundleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 //値を親に渡してfirebaseに登録するロジックを作成する
 export const ItemInput: React.FC<Props> = ({
   stores,
-  setStores,
+  inputStore,
+  setInputStore,
   handleSubmit,
+  hundleInputChange,
 }) => {
-  const [inputStore, setInputStore] = useState("");
-  const [count, setCount] = useState(stores.length + 1);
+  // const [inputStore, setInputStore] = useState("");
+  // const [count, setCount] = useState(stores.length + 1);
 
-  const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setInputStore(e.target.value);
-  };
+  // const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //   setInputStore(e.target.value);
+  // };
 
   return (
     //mapで回す場合keyは必須
