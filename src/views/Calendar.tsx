@@ -19,7 +19,9 @@ const Calendar = () => {
   return (
     <div>
       <div className="content-body flex flex-vertical flex-1 flex-row">
+        {/* <div className="sticky"> */}
         <Side />
+        {/* </div> */}
         <div className="m-40 mh-100vh w-100">
           <FullCalendar
             plugins={[dayGridPlugin, interactionPlugin]}

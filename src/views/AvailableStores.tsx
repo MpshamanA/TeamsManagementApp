@@ -50,9 +50,9 @@ const AvailableStores = () => {
   return (
     <div>
       <div className="content-body flex flex-vertical flex-1 flex-row">
-        <div className="sticky">
-          <Side />
-        </div>
+        {/* <div className="sticky"> */}
+        <Side />
+        {/* </div> */}
         <div className="min-w-100">
           <ItemInput
             stores={stores}

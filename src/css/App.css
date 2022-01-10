@@ -63,10 +63,6 @@ body {
   }
 
   .content-body nav {
-    flex-basis: 100px; /* flex-basis（初期値）を指定 */
-  }
-
-  .content-body nav {
     /* アイテムの表示順序 */
     order: 1;
   }
@@ -74,4 +70,3 @@ body {
 .m-30 {
   margin: 30px;
 }
-/*calendar*/
