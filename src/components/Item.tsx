@@ -1,6 +1,7 @@
 import { DateProfileGenerator } from "@fullcalendar/react";
 import React, { useState } from "react";
 import { Store } from "../Type";
+import Button from "@mui/material/Button";
 
 type Props = {
   store: Store;
@@ -9,8 +10,6 @@ type Props = {
 };
 
 export const Item: React.FC<Props> = ({ store, handleDone, handleDelete }) => {
-  const [newStore, useNewStore] = useState("");
-
   return (
     <li className={store.done ? "done" : ""}>
       <label>
@@ -24,9 +23,14 @@ export const Item: React.FC<Props> = ({ store, handleDone, handleDelete }) => {
       </label>
       <span>{store.updateUser} </span>
       <span>{store.updateTime} </span>
-      <button className="btn is-dalete" onClick={handleDelete}>
+      <Button
+        variant="contained"
+        size="small"
+        color="error"
+        onClick={handleDelete}
+      >
         削除
-      </button>
+      </Button>
     </li>
   );
 };

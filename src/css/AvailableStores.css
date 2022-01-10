@@ -1,3 +1,17 @@
 .min-w-100 {
   width: calc(100% - 220px); /*サイドバー分マイナス*/
 }
+
+.sticky {
+  position: sticky;
+  flex-basis: 220px;
+  width: 220px;
+  border-right: 2px solid rgb(20, 163, 96);
+  border-image: linear-gradient(
+    to bottom,
+    rgb(20, 163, 96) 0%,
+    rgb(4, 154, 255) 100%
+  );
+  border-image-slice: 1;
+  min-height: 100vh;
+}

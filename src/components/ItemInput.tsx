@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../css/Items.css";
 import { Store } from "../Type";
+import Button from "@mui/material/Button";
 
 type Props = {
   stores: Store[];
@@ -18,13 +19,6 @@ export const ItemInput: React.FC<Props> = ({
   handleSubmit,
   hundleInputChange,
 }) => {
-  // const [inputStore, setInputStore] = useState("");
-  // const [count, setCount] = useState(stores.length + 1);
-
-  // const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-  //   setInputStore(e.target.value);
-  // };
-
   return (
     //mapで回す場合keyは必須
     <div className="inner">
@@ -37,9 +31,14 @@ export const ItemInput: React.FC<Props> = ({
             value={inputStore}
             onChange={hundleInputChange}
           />
-          <button className="btn is-primary" onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
+            onClick={handleSubmit}
+          >
             追加
-          </button>
+          </Button>
         </div>
       </div>
     </div>

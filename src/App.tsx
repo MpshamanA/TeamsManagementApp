@@ -1,7 +1,8 @@
 import React from "react";
 import "./css/App.css";
 import { Side } from "./components/Side";
-import { Main } from "./Main";
+import AvailableStores from "./views/AvailableStores";
+import { Main } from "./views/Main";
 
 function App() {
   return (

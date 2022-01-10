@@ -11,7 +11,6 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 import { db } from "../firebase";
-import { idText } from "typescript";
 
 const AvailableStores = () => {
   const [stores, setStores] = useState(Array());
@@ -37,6 +36,7 @@ const AvailableStores = () => {
       updateTime: "20220106",
       done: false,
     });
+    setInputStore("");
   };
   const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputStore(e.target.value);
@@ -50,7 +50,9 @@ const AvailableStores = () => {
   return (
     <div>
       <div className="content-body flex flex-vertical flex-1 flex-row">
-        <Side />
+        <div className="sticky">
+          <Side />
+        </div>
         <div className="min-w-100">
           <ItemInput
             stores={stores}
