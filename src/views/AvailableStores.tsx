@@ -19,13 +19,14 @@ const AvailableStores = () => {
 
   const storesCollectionRef = collection(db, "Stores");
 
+  //storesに変更があった時にレンダリングされる
   useEffect(() => {
     const GetStores = async () => {
       const data = await getDocs(storesCollectionRef);
       setStores(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     GetStores();
-  }, []);
+  }, [stores]);
 
   //fireBaseにデータを追加する
   const handleSubmit = async () => {

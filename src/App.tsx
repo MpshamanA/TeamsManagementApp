@@ -1,7 +1,7 @@
 import React from "react";
 import "./css/App.css";
 import { Side } from "./components/Side";
-import AvailableStores from "./views/AvailableStores";
+import SignUp from "./views/SignUp";
 import { Main } from "./views/Main";
 
 function App() {

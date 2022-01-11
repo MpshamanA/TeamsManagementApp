@@ -31,23 +31,6 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
   },
 }));
 
-function createData(
-  name: string,
-  calories: number,
-  fat: number,
-  carbs: number,
-  protein: number
-) {
-  return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-  createData("Frozen yoghurt", 159, 6.0, 24, 4.0),
-  createData("Ice cream sandwich", 237, 9.0, 37, 4.3),
-  createData("Eclair", 262, 16.0, 24, 6.0),
-  createData("Cupcake", 305, 3.7, 67, 4.3),
-  createData("Gingerbread", 356, 16.0, 49, 3.9),
-];
 type Props = {
   stores: Store[];
   setStores: React.Dispatch<React.SetStateAction<Store[]>>;
@@ -58,30 +41,10 @@ export const ItemList: React.FC<Props> = ({
   setStores,
   handleDelete,
 }) => {
-  const handleDone = (store: Store) => {
-    setStores((prev) =>
-      prev.map((s) => (s.id === store.id ? { ...store, done: !store.done } : s))
-    );
-  };
-
   return (
     //mapで回す場合keyは必須
     <div className="inner">
       <h1>使用できたお店一覧</h1>
-      {/* {stores.length <= 0 ? (
-        "登録されたお店はありません"
-      ) : (
-        <ul>
-          {stores.map((store) => (
-            <Item
-              key={store.id}
-              store={store}
-              handleDone={handleDone}
-              handleDelete={() => handleDelete(store.id)}
-            />
-          ))}
-        </ul>
-      )} */}
       <div className="m-30">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
