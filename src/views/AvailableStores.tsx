@@ -20,21 +20,34 @@ const AvailableStores = () => {
   const storesCollectionRef = collection(db, "Stores");
 
   //storesに変更があった時にレンダリングされる
+  // useEffect(() => {
+  //   const GetStores = async () => {
+  //     const data = await getDocs(storesCollectionRef);
+  //     setStores(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
+  //   };
+  //   GetStores();
+  // }, [stores]);
   useEffect(() => {
     const GetStores = async () => {
       const data = await getDocs(storesCollectionRef);
       setStores(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
     GetStores();
-  }, [stores]);
+  }, []);
+
+  //今日の日付を取得
+  const dateInfo: Date = new Date();
+  const fullYear: string = dateInfo.getFullYear().toString();
+  const month: number = dateInfo.getMonth() + 1;
+  const date: string = dateInfo.getDate().toString();
 
   //fireBaseにデータを追加する
   const handleSubmit = async () => {
     await addDoc(storesCollectionRef, {
       id: stores.length + 1,
       storeName: inputStore,
-      updateUser: "test",
-      updateTime: "20220106",
+      updateUser: "testUser",
+      updateTime: `${fullYear}/${month.toString()}/${date}`,
       done: false,
     });
     setInputStore("");
@@ -51,10 +64,8 @@ const AvailableStores = () => {
   return (
     <div>
       <div className="content-body flex flex-vertical flex-1 flex-row">
-        {/* <div className="sticky"> */}
         <Side />
-        {/* </div> */}
-        <div className="min-w-100">
+        <div className="min-calc">
           <ItemInput
             stores={stores}
             inputStore={inputStore}
@@ -62,6 +73,7 @@ const AvailableStores = () => {
             handleSubmit={handleSubmit}
             hundleInputChange={hundleInputChange}
           />
+          <h1 className="pl-10">使用できた店舗一覧</h1>
           <ItemList
             stores={stores}
             setStores={setStores}

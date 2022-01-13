@@ -10,9 +10,9 @@
 }
 .order-1 {
   order: -1;
-  flex-basis: 240px;
-  width: 240px;
-  border-right: 2px solid rgb(20, 163, 96);
+  flex-basis: 220px;
+  width: 220px;
+  border-right: 1px solid rgb(20, 163, 96);
   border-image: linear-gradient(
     to bottom,
     rgb(20, 163, 96) 0%,
@@ -27,7 +27,7 @@
 }
 .img-logo {
   width: 200px;
-  padding: 10px 10px;
+  padding: 12px 12px;
 }
 
 nav {

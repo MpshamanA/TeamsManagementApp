@@ -8,7 +8,9 @@ import Calendar from "./views/Calendar";
 import AvailableStores from "./views/AvailableStores";
 import reportWebVitals from "./reportWebVitals";
 import Qa from "./views/Qa";
+import SignUp from "./views/SignUp";
 import { Route, BrowserRouter } from "react-router-dom";
+import SignIn from "./views/SignIn";
 
 //routeの設定
 ReactDOM.render(
@@ -21,6 +23,8 @@ ReactDOM.render(
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/availableStores" component={AvailableStores} />
         <Route exact path="/qa" component={Qa} />
+        <Route exact path="/signUp" component={SignUp} />
+        <Route exact path="/signIn" component={SignIn} />
       </div>
     </BrowserRouter>
   </React.StrictMode>,

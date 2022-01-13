@@ -44,7 +44,6 @@ export const ItemList: React.FC<Props> = ({
   return (
     //mapで回す場合keyは必須
     <div className="inner">
-      <h1>使用できたお店一覧</h1>
       <div className="m-30">
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">

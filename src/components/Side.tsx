@@ -17,7 +17,7 @@ import RestaurantIcon from "@mui/icons-material/Restaurant";
 const current = {
   color: "blue",
   textDecoration: "none",
-  background: "#ccc",
+  background: "#ddd",
   width: "100%",
   display: "inline-block",
 };
@@ -39,7 +39,12 @@ export const Side = () => {
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary="HOME" />
+                <ListItemText
+                  primary="HOME"
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                />
               </ListItemButton>
             </li>
           </NavLink>
@@ -54,7 +59,12 @@ export const Side = () => {
                 <ListItemIcon>
                   <AccountCircleIcon />
                 </ListItemIcon>
-                <ListItemText primary="Teams" />
+                <ListItemText
+                  primary="Teams"
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                />
               </ListItemButton>
             </li>
           </NavLink>
@@ -69,7 +79,12 @@ export const Side = () => {
                 <ListItemIcon>
                   <AutoAwesomeMotionRoundedIcon />
                 </ListItemIcon>
-                <ListItemText primary="福利厚生" />
+                <ListItemText
+                  primary="福利厚生"
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                />
               </ListItemButton>
             </li>
           </NavLink>
@@ -84,7 +99,12 @@ export const Side = () => {
                 <ListItemIcon>
                   <CalendarViewMonthRoundedIcon />
                 </ListItemIcon>
-                <ListItemText primary="Calendar" />
+                <ListItemText
+                  primary="Calendar"
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                />
               </ListItemButton>
             </li>
           </NavLink>
@@ -99,7 +119,12 @@ export const Side = () => {
                 <ListItemIcon>
                   <RestaurantIcon />
                 </ListItemIcon>
-                <ListItemText primary="チケットレストラン" />
+                <ListItemText
+                  primary="チケットレストラン"
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                />
               </ListItemButton>
             </li>
           </NavLink>
@@ -114,7 +139,12 @@ export const Side = () => {
                 <ListItemIcon>
                   <QuestionMarkIcon />
                 </ListItemIcon>
-                <ListItemText primary="よくある質問" />
+                <ListItemText
+                  primary="よくある質問"
+                  primaryTypographyProps={{
+                    fontSize: 14,
+                  }}
+                />
               </ListItemButton>
             </li>
           </NavLink>

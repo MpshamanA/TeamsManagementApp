@@ -5,3 +5,10 @@ export type Store = {
   updateTime: String;
   done: boolean;
 };
+
+export type User = {
+  name: String;
+  position: String;
+  email: String;
+  password: String;
+};
