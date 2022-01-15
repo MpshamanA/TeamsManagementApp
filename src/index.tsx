@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Form from "./views/Form";
-import Test from "./views/Test";
+import benefits from "./views/Benefits";
 import Calendar from "./views/Calendar";
 import AvailableStores from "./views/AvailableStores";
 import reportWebVitals from "./reportWebVitals";
@@ -19,7 +19,7 @@ ReactDOM.render(
       <div>
         <Route exact path="/" component={App} />
         <Route exact path="/form" component={Form} />
-        <Route exact path="/test" component={Test} />
+        <Route exact path="/benefits" component={benefits} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/availableStores" component={AvailableStores} />
         <Route exact path="/qa" component={Qa} />

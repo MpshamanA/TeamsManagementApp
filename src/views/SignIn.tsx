@@ -1,17 +1,24 @@
 import * as React from "react";
+import { RouteComponentProps } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
+import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { User } from "../Type";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 function Copyright(props: any) {
   return (
@@ -22,27 +29,39 @@ function Copyright(props: any) {
       {...props}
     >
       {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
+      {"Future SQUARE "}
       {new Date().getFullYear()}
       {"."}
     </Typography>
   );
 }
-
 const theme = createTheme();
 
-export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+const SignIn: React.FC<RouteComponentProps> = (props) => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm<User>();
+
+  //ログイン処理
+  const auth = getAuth();
+  const handleSignIn = async (data: User) => {
+    const { email, password } = data;
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      props.history.push("/");
+    } catch (error) {
+      alert(error);
+    }
   };
+  //ユーザー判定 ユーザー情報を保持している場合メイン画面へ
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      user && props.history.push("/");
+    });
+  }, []);
 
   return (
     <ThemeProvider theme={theme}>
@@ -60,11 +79,11 @@ export default function SignIn() {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            サインイン
           </Typography>
           <Box
             component="form"
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(handleSignIn)}
             noValidate
             sx={{ mt: 1 }}
           >
@@ -73,24 +92,27 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
-              name="email"
+              label="メールアドレス"
               autoComplete="email"
               autoFocus
+              error={Boolean(errors.email)}
+              helperText={errors.email}
+              {...register("email", {
+                required: true,
+                pattern:
+                  /^[A-Za-z0-9]{1}[A-Za-z0-9_.-]*@{1}[A-Za-z0-9_.-]{1,}\.[A-Za-z0-9]{1,}$/,
+              })}
             />
             <TextField
               margin="normal"
               required
               fullWidth
-              name="password"
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
-            />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              autoComplete="password"
+              error={Boolean(errors.password)}
+              {...register("password", { required: true, minLength: 6 })}
             />
             <Button
               type="submit"
@@ -98,24 +120,19 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              サインイン
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
+            <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link href="#" variant="body2">
-                  {"Don't have an account? Sign Up"}
-                </Link>
+                <Link to={"/signUp"}>アカウントをお持ちでない方はこちら</Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Copyright sx={{ mt: 5 }} />
       </Container>
     </ThemeProvider>
   );
-}
+};
+
+export default SignIn;

@@ -1,8 +1,7 @@
-import React from "react";
 import "../css/Form.css";
 import { Side } from "../components/Side";
 
-const Test = () => {
+const Benefits = () => {
   return (
     <div>
       <div className="content-body flex flex-vertical flex-1 flex-row">
@@ -12,4 +11,4 @@ const Test = () => {
   );
 };
 
-export default Test;
+export default Benefits;

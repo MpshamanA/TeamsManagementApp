@@ -1,22 +1,11 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
-import { useState, useEffect } from "react";
+import { RouteComponentProps } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import {
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
-} from "@mui/material";
-import { VisibilityOff, Visibility } from "@mui/icons-material";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Checkbox from "@mui/material/Checkbox";
-// import Link from "@mui/material/Link";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
@@ -44,45 +33,24 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-const SignUp = () => {
+const SignUp: React.FC<RouteComponentProps> = (props) => {
   const {
+    handleSubmit,
     register,
     formState: { errors },
   } = useForm<User>();
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    // eslint-disable-next-line no-console
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+
+  //新規登録処理
+  const auth = getAuth();
+  const handleSignUp = async (data: User) => {
+    const { email, password } = data;
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      props.history.push("/");
+    } catch (error) {
+      alert(error);
+    }
   };
-
-  //firebaseへのユーザーの新規登録
-  // const auth = getAuth();
-  // const handleSubmit = (event: any) => {
-  //   event.preventDefault();
-  //   const { email, password } = event.target.elements;
-  //   try {
-  //     createUserWithEmailAndPassword(auth, email.value, password.value).then(
-  //       (userCredential) => {
-  //         // Signed in
-  //         const user = userCredential.user;
-  //         console.log(user.email);
-  //       }
-  //     );
-  //   } catch (error) {
-  //     alert(error);
-  //   }
-  // };
-
-  // const handleChangeEmail = (event: any) => {
-  //   setEmail(event.currentTarget.value);
-  // };
-  // const handleChangePassword = (event: any) => {
-  //   setPassword(event.currentTarget.value);
-  // };
 
   return (
     <ThemeProvider theme={theme}>
@@ -100,13 +68,13 @@ const SignUp = () => {
             <LockOutlinedIcon />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign up
+            新規登録
           </Typography>
           <Box
             component="form"
             noValidate
             sx={{ mt: 3 }}
-            onSubmit={handleSubmit}
+            onSubmit={handleSubmit(handleSignUp)}
           >
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
@@ -165,11 +133,11 @@ const SignUp = () => {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign Up
+              新規登録
             </Button>
             <Grid container justifyContent="flex-end">
               <Grid item>
-                <Link to={"/signIn"}>Already have an account? Sign in</Link>
+                <Link to={"/signIn"}>アカウントをお持ちの方はこちら</Link>
               </Grid>
             </Grid>
           </Box>

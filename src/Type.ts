@@ -7,8 +7,8 @@ export type Store = {
 };
 
 export type User = {
-  name: String;
-  position: String;
-  email: String;
-  password: String;
+  name: string;
+  position: string;
+  email: string;
+  password: string;
 };

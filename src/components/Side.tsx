@@ -1,12 +1,10 @@
-import React from "react";
 import "../css/side.css";
 import logo from "../logo.png";
 import { NavLink } from "react-router-dom";
-import ListSubheader from "@mui/material/ListSubheader";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import GroupsIcon from "@mui/icons-material/Groups";
 import HomeIcon from "@mui/icons-material/Home";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import AutoAwesomeMotionRoundedIcon from "@mui/icons-material/AutoAwesomeMotionRounded";
@@ -57,7 +55,7 @@ export const Side = () => {
             <li className="side-menu">
               <ListItemButton sx={{ pt: 1.5, pb: 1.5 }}>
                 <ListItemIcon>
-                  <AccountCircleIcon />
+                  <GroupsIcon />
                 </ListItemIcon>
                 <ListItemText
                   primary="Teams"
@@ -70,7 +68,7 @@ export const Side = () => {
           </NavLink>
           <NavLink
             exact
-            to={"/test"}
+            to={"/benefits"}
             className="link-bar-none"
             activeStyle={current}
           >
