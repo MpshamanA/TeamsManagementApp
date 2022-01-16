@@ -33,14 +33,9 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 type Props = {
   stores: Store[];
-  setStores: React.Dispatch<React.SetStateAction<Store[]>>;
   handleDelete: (n: number) => void;
 };
-export const ItemList: React.FC<Props> = ({
-  stores,
-  setStores,
-  handleDelete,
-}) => {
+export const ItemList: React.FC<Props> = ({ stores, handleDelete }) => {
   return (
     //mapで回す場合keyは必須
     <div className="inner">

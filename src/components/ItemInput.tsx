@@ -6,7 +6,6 @@ import Button from "@mui/material/Button";
 type Props = {
   stores: Store[];
   inputStore: string;
-  setInputStore: React.Dispatch<React.SetStateAction<string>>;
   handleSubmit: () => void;
   hundleInputChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 };
@@ -15,7 +14,6 @@ type Props = {
 export const ItemInput: React.FC<Props> = ({
   stores,
   inputStore,
-  setInputStore,
   handleSubmit,
   hundleInputChange,
 }) => {

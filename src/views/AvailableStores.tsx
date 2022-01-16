@@ -43,14 +43,18 @@ const AvailableStores = () => {
 
   //fireBaseにデータを追加する
   const handleSubmit = async () => {
-    await addDoc(storesCollectionRef, {
-      id: stores.length + 1,
-      storeName: inputStore,
-      updateUser: "testUser",
-      updateTime: `${fullYear}/${month.toString()}/${date}`,
-      done: false,
-    });
-    setInputStore("");
+    try {
+      await addDoc(storesCollectionRef, {
+        id: stores.length + 1,
+        storeName: inputStore,
+        updateUser: "testUser",
+        updateTime: `${fullYear}/${month.toString()}/${date}`,
+        done: false,
+      });
+      setInputStore("");
+    } catch (error) {
+      alert(error);
+    }
   };
   const hundleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputStore(e.target.value);
@@ -69,16 +73,11 @@ const AvailableStores = () => {
           <ItemInput
             stores={stores}
             inputStore={inputStore}
-            setInputStore={setInputStore}
             handleSubmit={handleSubmit}
             hundleInputChange={hundleInputChange}
           />
           <h1 className="pl-10">使用できた店舗一覧</h1>
-          <ItemList
-            stores={stores}
-            setStores={setStores}
-            handleDelete={handleDelete}
-          />
+          <ItemList stores={stores} handleDelete={handleDelete} />
         </div>
       </div>
     </div>

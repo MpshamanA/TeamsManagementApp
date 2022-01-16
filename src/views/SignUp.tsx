@@ -2,6 +2,14 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  collection,
+  getDocs,
+  addDoc,
+  setDoc,
+  doc,
+  deleteDoc,
+} from "firebase/firestore";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -14,6 +22,7 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { User } from "../Type";
 import { Link } from "react-router-dom";
+import { db } from "../firebase";
 
 function Copyright(props: any) {
   return (
@@ -42,13 +51,30 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
 
   //新規登録処理
   const auth = getAuth();
+  //ユーザー情報を登録するコレクションを設定
+  const usersCollectionRef = collection(db, "Users");
+  // required: trueにすることによってデータを取得する
   const handleSignUp = async (data: User) => {
-    const { email, password } = data;
+    const { name, position, email, password } = data;
+    //認証情報とstore情報をuidで紐付け
+    let uid: any;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       props.history.push("/");
+      uid = auth.currentUser?.uid;
     } catch (error) {
       alert(error);
+      return;
+    }
+    try {
+      await setDoc(doc(usersCollectionRef, uid), {
+        name: name,
+        position: position,
+        email: email,
+      });
+    } catch (error) {
+      alert(error);
+      return;
     }
   };
 
@@ -80,12 +106,14 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
               <Grid item xs={12} sm={6}>
                 <TextField
                   autoComplete="given-name"
-                  name="Name"
                   required
                   fullWidth
                   id="Name"
                   label="名前"
                   autoFocus
+                  {...register("name", {
+                    required: true,
+                  })}
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -94,8 +122,10 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
                   fullWidth
                   id="position"
                   label="支店"
-                  name="position"
                   autoComplete="position"
+                  {...register("position", {
+                    required: true,
+                  })}
                 />
               </Grid>
               <Grid item xs={12}>
