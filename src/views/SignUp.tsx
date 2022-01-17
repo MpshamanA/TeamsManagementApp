@@ -1,7 +1,12 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  setPersistence,
+  browserSessionPersistence,
+} from "firebase/auth";
 import {
   collection,
   getDocs,
@@ -49,14 +54,44 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
     formState: { errors },
   } = useForm<User>();
 
+  // const auth = getAuth();
+
+  // const handleSignUp = async (data: User) => {
+  //   const { name, position, email, password } = data;
+  // setPersistence(auth, browserSessionPersistence)
+  // .then(() => {
+  //   return createUserWithEmailAndPassword(auth, email, password);
+  // })
+  // .catch((error) => {
+  //   // Handle Errors here.
+  //   const errorCode = error.code;
+  //   const errorMessage = error.message;
+  // });
+  // //認証に成功した場合uidを取得
+  // props.history.push("/");
+  //   let uid: any
+  //   uid = auth.currentUser?.uid;
+  //   //認証情報とstore情報をuidで紐付け
+  //   try {
+  //     await setDoc(doc(usersCollectionRef, uid), {
+  //       name: name,
+  //       position: position,
+  //       email: email,
+  //     });
+  //   } catch (error) {
+  //     alert(error);
+  //     return;
+  //   }
+  // };
+
   //新規登録処理
   const auth = getAuth();
   //ユーザー情報を登録するコレクションを設定
   const usersCollectionRef = collection(db, "Users");
-  // required: trueにすることによってデータを取得する
+  //required: trueにすることによってデータを取得する
   const handleSignUp = async (data: User) => {
     const { name, position, email, password } = data;
-    //認証情報とstore情報をuidで紐付け
+    //認証に成功した場合uidを取得
     let uid: any;
     try {
       await createUserWithEmailAndPassword(auth, email, password);
@@ -66,6 +101,7 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
       alert(error);
       return;
     }
+    //認証情報とstore情報をuidで紐付け
     try {
       await setDoc(doc(usersCollectionRef, uid), {
         name: name,
