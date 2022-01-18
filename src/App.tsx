@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import "./css/App.css";
 import { Side } from "./components/Side";
 import { Main } from "./views/Main";
@@ -15,12 +15,15 @@ const App: React.FC<RouteComponentProps> = (props) => {
       setUser(user);
       !user && props.history.push("signUp");
     });
+    // return () => {
+    //   !user && props.history.push("signUp");
+    // };
   }, []);
+
   return (
     <div className="App flex flex-vertical">
       <div className="content-body flex flex-vertical flex-1">
         <Main history={props.history} signUpUserName={user?.email!} />
-        {/* signUpUserName={user !== null ? user.email! : "rr"} */}
         <Side />
       </div>
     </div>

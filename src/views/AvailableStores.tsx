@@ -15,14 +15,13 @@ import {
 } from "firebase/firestore";
 import { db } from "../firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { async } from "@firebase/util";
+import { RouteComponentProps } from "react-router-dom";
 
-const AvailableStores = () => {
+const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   const auth = getAuth();
   const [stores, setStores] = useState(Array());
+  //ログインしてるユーザーネーム
   const [userName, setUserName] = useState("");
-  //ログインしているユーザーを取得
-  const [user, setUser] = useState(auth.currentUser);
   //inputタグに入力されたデータ
   const [inputStore, setInputStore] = useState("");
   const storesCollectionRef = collection(db, "Stores");
@@ -35,36 +34,28 @@ const AvailableStores = () => {
     const GetStores = async () => {
       const data = await getDocs(storesCollectionRef);
       setStores(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-      console.log("呼ばれたよ");
     };
     GetStores();
   }, []);
-  //リロードした時にログイン情報を保持できていない↓
+
   useEffect(() => {
-    // setUid(auth.currentUser!.uid);
-    setUser(auth.currentUser);
-    const getUserName = async () => {
-      const docRef = doc(usersCollectionRef, user!.uid);
-      const docSnap = await getDoc(docRef);
-      if (docSnap.exists()) {
-        setUserName(docSnap.data().name);
-      } else {
-        setUserName("NULL");
-      }
-    };
-    getUserName();
+    //現在ログインしているユーザーを取得する
+    onAuthStateChanged(auth, (resUser) => {
+      const getUserName = async () => {
+        const docRef = doc(usersCollectionRef, resUser?.uid);
+        const docSnap = await getDoc(docRef);
+        //データが存在しない場合、スナップショットから返されるのは、exists() を呼び出した場合は false
+        if (docSnap.exists()) {
+          setUserName(docSnap.data().name);
+        } else {
+          setUserName("NULL");
+        }
+      };
+      getUserName();
+    });
   }, []);
 
-  // const test = useMemo(() => {
-  //   const GetStores = async () => {
-  //     const data = await getDocs(storesCollectionRef);
-  //     setStores(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
-  //     console.log("呼ばれたよ");
-  //   };
-  //   GetStores();
-  // }, []);
-
-  //今日の日付を取得
+  //現在の日付を取得
   const dateInfo: Date = new Date();
   const fullYear: string = dateInfo.getFullYear().toString();
   const month: number = dateInfo.getMonth() + 1;
