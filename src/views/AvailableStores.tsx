@@ -16,6 +16,8 @@ import {
 import { db } from "../firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { RouteComponentProps } from "react-router-dom";
+import style from "../css/common.module.scss";
+import { Header } from "../components/Header";
 
 const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   const auth = getAuth();
@@ -31,27 +33,43 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
 
   //storesに変更があった時にレンダリングされる
   useEffect(() => {
+    //メモリリーク回避：非同期処理が完了する前にコンポーネントがアンマウントされると、ステートは更新されない
+    let unmounted: boolean = false;
     const GetStores = async () => {
       const data = await getDocs(storesCollectionRef);
       setStores(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
     };
-    GetStores();
+    if (!unmounted) {
+      GetStores();
+    }
+    return () => {
+      unmounted = true;
+    };
   }, []);
 
   useEffect(() => {
     //現在ログインしているユーザーを取得する
+    let unmounted: boolean = false;
     onAuthStateChanged(auth, (resUser) => {
-      const getUserName = async () => {
-        const docRef = doc(usersCollectionRef, resUser?.uid);
-        const docSnap = await getDoc(docRef);
-        //データが存在しない場合、スナップショットから返されるのは、exists() を呼び出した場合は false
-        if (docSnap.exists()) {
-          setUserName(docSnap.data().name);
-        } else {
-          setUserName("NULL");
+      if (resUser) {
+        const getUserName = async () => {
+          const docRef = doc(usersCollectionRef, resUser!.uid);
+          const docSnap = await getDoc(docRef);
+          //データが存在しない場合、スナップショットから返されるのは、exists() を呼び出した場合は false
+          if (docSnap.exists()) {
+            //現在ログインしているユーザーの名前を取得する
+            setUserName(docSnap.data().name);
+          } else {
+            setUserName("NULL");
+          }
+        };
+        if (!unmounted) {
+          getUserName();
         }
-      };
-      getUserName();
+        return () => {
+          unmounted = true;
+        };
+      }
     });
   }, []);
 
@@ -86,19 +104,22 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   };
 
   return (
-    <div>
-      <div className="content-body flex flex-vertical flex-1 flex-row">
+    <div className={style.grid}>
+      <div className={style.side}>
         <Side />
-        <div className="min-calc">
-          <ItemInput
-            stores={stores}
-            inputStore={inputStore}
-            handleSubmit={handleSubmit}
-            hundleInputChange={hundleInputChange}
-          />
-          <h1 className="pl-10">使用できた店舗一覧</h1>
-          <ItemList stores={stores} handleDelete={handleDelete} />
-        </div>
+      </div>
+      <div className={style.header}>
+        <Header history={props.history} />
+      </div>
+      <div className={style.mainItemList}>
+        <ItemInput
+          stores={stores}
+          inputStore={inputStore}
+          handleSubmit={handleSubmit}
+          hundleInputChange={hundleInputChange}
+        />
+        <h1 className="pl-10">使用できた店舗一覧</h1>
+        <ItemList stores={stores} handleDelete={handleDelete} />
       </div>
     </div>
   );

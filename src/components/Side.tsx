@@ -48,7 +48,7 @@ export const Side = () => {
           </NavLink>
           <NavLink
             exact
-            to={"/form"}
+            to={"/teams"}
             className="link-bar-none"
             activeStyle={current}
           >
@@ -79,26 +79,6 @@ export const Side = () => {
                 </ListItemIcon>
                 <ListItemText
                   primary="福利厚生"
-                  primaryTypographyProps={{
-                    fontSize: 14,
-                  }}
-                />
-              </ListItemButton>
-            </li>
-          </NavLink>
-          <NavLink
-            exact
-            to={"/calendar"}
-            className="link-bar-none"
-            activeStyle={current}
-          >
-            <li className="side-menu">
-              <ListItemButton sx={{ pt: 1.5, pb: 1.5 }}>
-                <ListItemIcon>
-                  <CalendarViewMonthRoundedIcon />
-                </ListItemIcon>
-                <ListItemText
-                  primary="Calendar"
                   primaryTypographyProps={{
                     fontSize: 14,
                   }}

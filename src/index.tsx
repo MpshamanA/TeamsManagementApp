@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Form from "./views/Form";
+import Teams from "./views/Teams";
 import benefits from "./views/Benefits";
 import Calendar from "./views/Calendar";
 import AvailableStores from "./views/AvailableStores";
@@ -18,7 +18,7 @@ ReactDOM.render(
     <BrowserRouter>
       <div>
         <Route exact path="/" component={App} />
-        <Route exact path="/form" component={Form} />
+        <Route exact path="/teams" component={Teams} />
         <Route exact path="/benefits" component={benefits} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/availableStores" component={AvailableStores} />

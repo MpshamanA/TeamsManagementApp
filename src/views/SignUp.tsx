@@ -1,20 +1,8 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  setPersistence,
-  browserSessionPersistence,
-} from "firebase/auth";
-import {
-  collection,
-  getDocs,
-  addDoc,
-  setDoc,
-  doc,
-  deleteDoc,
-} from "firebase/firestore";
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { collection, setDoc, doc } from "firebase/firestore";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -28,6 +16,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { User } from "../Type";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
+import InputLabel from "@mui/material/InputLabel";
+import MenuItem from "@mui/material/MenuItem";
+import FormControl from "@mui/material/FormControl";
+import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 function Copyright(props: any) {
   return (
@@ -44,6 +36,24 @@ function Copyright(props: any) {
     </Typography>
   );
 }
+const positions = [
+  {
+    value: "東京本社",
+    label: "東京本社",
+  },
+  {
+    value: "名古屋支店",
+    label: "名古屋支店",
+  },
+  {
+    value: "大阪支店",
+    label: "大阪支店",
+  },
+  {
+    value: "福岡支店",
+    label: "福岡支店",
+  },
+];
 
 const theme = createTheme();
 
@@ -53,36 +63,6 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
     register,
     formState: { errors },
   } = useForm<User>();
-
-  // const auth = getAuth();
-
-  // const handleSignUp = async (data: User) => {
-  //   const { name, position, email, password } = data;
-  // setPersistence(auth, browserSessionPersistence)
-  // .then(() => {
-  //   return createUserWithEmailAndPassword(auth, email, password);
-  // })
-  // .catch((error) => {
-  //   // Handle Errors here.
-  //   const errorCode = error.code;
-  //   const errorMessage = error.message;
-  // });
-  // //認証に成功した場合uidを取得
-  // props.history.push("/");
-  //   let uid: any
-  //   uid = auth.currentUser?.uid;
-  //   //認証情報とstore情報をuidで紐付け
-  //   try {
-  //     await setDoc(doc(usersCollectionRef, uid), {
-  //       name: name,
-  //       position: position,
-  //       email: email,
-  //     });
-  //   } catch (error) {
-  //     alert(error);
-  //     return;
-  //   }
-  // };
 
   //新規登録処理
   const auth = getAuth();
@@ -104,6 +84,7 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
     //認証情報とstore情報をuidで紐付け
     try {
       await setDoc(doc(usersCollectionRef, uid), {
+        // id:
         name: name,
         position: position,
         email: email,

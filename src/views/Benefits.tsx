@@ -1,4 +1,3 @@
-import "../css/Form.css";
 import { Side } from "../components/Side";
 
 const Benefits = () => {

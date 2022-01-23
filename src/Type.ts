@@ -7,6 +7,7 @@ export type Store = {
 };
 
 export type User = {
+  id: number;
   name: string;
   position: string;
   email: string;
