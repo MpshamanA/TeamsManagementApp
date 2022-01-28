@@ -6,6 +6,7 @@ import { RouteComponentProps } from "react-router-dom";
 import { CardItem } from "../components/CardItem";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import { NavLink } from "react-router-dom";
 
 const Teams: React.FC<RouteComponentProps> = (prop) => {
   const [users, setUsers] = useState(Array());
@@ -36,11 +37,14 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
       </div>
       <div className={style.mainTeams}>
         {users.map((user) => (
-          <CardItem
+          <NavLink
+            exact
+            to={`/teams/"${user.id}"`}
+            className="link-bar-none"
             key={user.id}
-            userName={user.name}
-            position={user.position}
-          />
+          >
+            <CardItem userName={user.name} position={user.position} />
+          </NavLink>
         ))}
       </div>
     </div>

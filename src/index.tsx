@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import Teams from "./views/Teams";
+import Team from "./views/Team";
 import benefits from "./views/Benefits";
 import Calendar from "./views/Calendar";
 import AvailableStores from "./views/AvailableStores";
@@ -19,6 +20,7 @@ ReactDOM.render(
       <div>
         <Route exact path="/" component={App} />
         <Route exact path="/teams" component={Teams} />
+        <Route exact path="/teams/:id" component={Team} />
         <Route exact path="/benefits" component={benefits} />
         <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/availableStores" component={AvailableStores} />
