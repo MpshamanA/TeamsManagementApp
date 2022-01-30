@@ -12,4 +12,12 @@ export type User = {
   position: string;
   email: string;
   password: string;
+  CareerPlan?: string;
+};
+
+//一旦全部NULL許容
+export type ProgrammingLanguages = {
+  id?: number;
+  uid?: string;
+  programmingLanguage?: string;
 };

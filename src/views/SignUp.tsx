@@ -36,24 +36,6 @@ function Copyright(props: any) {
     </Typography>
   );
 }
-const positions = [
-  {
-    value: "東京本社",
-    label: "東京本社",
-  },
-  {
-    value: "名古屋支店",
-    label: "名古屋支店",
-  },
-  {
-    value: "大阪支店",
-    label: "大阪支店",
-  },
-  {
-    value: "福岡支店",
-    label: "福岡支店",
-  },
-];
 
 const theme = createTheme();
 
@@ -88,6 +70,7 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
         name: name,
         position: position,
         email: email,
+        CareerPlan: "NoData",
       });
     } catch (error) {
       alert(error);

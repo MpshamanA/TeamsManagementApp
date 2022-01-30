@@ -7,6 +7,8 @@ import { CardItem } from "../components/CardItem";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 import { NavLink } from "react-router-dom";
+import Card from "@mui/material/Card";
+import { minWidth } from "@mui/system";
 
 const Teams: React.FC<RouteComponentProps> = (prop) => {
   const [users, setUsers] = useState(Array());
@@ -43,7 +45,16 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
             className="link-bar-none"
             key={user.id}
           >
-            <CardItem userName={user.name} position={user.position} />
+            <Card
+              sx={{
+                backgroundColor: "#eee",
+                m: "10px",
+                p: "10px",
+                minWidth: "415px",
+              }}
+            >
+              <CardItem userName={user.name} position={user.position} />
+            </Card>
           </NavLink>
         ))}
       </div>

@@ -1,9 +1,9 @@
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
+import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
-import { Button, CardActions } from "@mui/material";
-import { User } from "../Type";
+import NoImage from "../images/noImage.png";
 
 type Props = {
   userName: string;
@@ -17,18 +17,33 @@ export const CardItem: React.FC<Props> = ({ userName, position }) => {
     ></Box>
   );
   return (
-    <Card sx={{ minWidth: 275, maxWidth: 300, m: 1 }}>
-      <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {position}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {userName}
-        </Typography>
+    <Card
+      sx={{
+        minWidth: 300,
+        maxWidth: 500,
+        m: 1,
+        minHeight: 150,
+      }}
+    >
+      <CardContent sx={{ display: "flex", padding: "24px" }}>
+        <CardContent>
+          <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            {position}
+          </Typography>
+          <Typography variant="h5" component="div">
+            {userName}
+          </Typography>
+        </CardContent>
+        <CardContent sx={{ p: "24px" }}>
+          <CardMedia
+            component="img"
+            height="150"
+            width="150"
+            image={NoImage}
+            alt="no image"
+          />
+        </CardContent>
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 };

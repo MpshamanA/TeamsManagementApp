@@ -51,6 +51,14 @@ export const Header: React.FC<PropType> = ({ history }) => {
             variant="contained"
             size="small"
             color="primary"
+            sx={{ marginRight: 3 }}
+          >
+            Edit Profile
+          </Button>
+          <Button
+            variant="contained"
+            size="small"
+            color="primary"
             onClick={handoleSignOut}
           >
             Logout
