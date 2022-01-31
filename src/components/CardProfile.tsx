@@ -31,7 +31,7 @@ export const CardProfile: React.FC<Props> = ({
           image={NoImage}
           alt="no image"
         />
-        <CardContent>
+        <CardContent sx={{ pb: 0 }}>
           <Typography gutterBottom variant="h4" component="div">
             {userName}
           </Typography>
@@ -42,23 +42,18 @@ export const CardProfile: React.FC<Props> = ({
             得意な技術
           </Typography>
         </CardContent>
-        <CardContent sx={{ p: 0, pl: 1 }}>
+        <CardContent sx={{ p: 0, pl: 2 }}>
           {programmingLanguages.length > 0 ? (
             programmingLanguages.map((e: ProgrammingLanguages) => (
               <Chip
                 key={e.id}
                 label={e.programmingLanguage}
-                sx={{ mr: "10px" }}
+                sx={{ mr: "10px", backgroundColor: "#3399FF", color: "#fff" }}
               />
             ))
           ) : (
-            <Typography
-              gutterBottom
-              variant="h6"
-              component="div"
-              color="text.secondary"
-            >
-              NODATA
+            <Typography variant="body2" component="div" color="text.secondary">
+              NoData
             </Typography>
           )}
         </CardContent>

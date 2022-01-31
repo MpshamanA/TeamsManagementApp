@@ -41,7 +41,7 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
         {users.map((user) => (
           <NavLink
             exact
-            to={`/teams/"${user.id}"`}
+            to={`/teams/${user.id}`}
             className="link-bar-none"
             key={user.id}
           >

@@ -2,7 +2,7 @@ import * as React from "react";
 import { useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, setDoc, doc } from "firebase/firestore";
+import { collection, setDoc, doc, getDocs } from "firebase/firestore";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -16,10 +16,6 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { User } from "../Type";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
 
 function Copyright(props: any) {
   return (
@@ -63,10 +59,12 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
       alert(error);
       return;
     }
-    //認証情報とstore情報をuidで紐付け
     try {
+      const users = await getDocs(usersCollectionRef);
+      //認証情報とstore情報をuidで紐付け
       await setDoc(doc(usersCollectionRef, uid), {
-        // id:
+        //現在のユーザー＋1をidとして登録する
+        id: users.docs.length + 1,
         name: name,
         position: position,
         email: email,

@@ -3,31 +3,16 @@ import style from "../css/common.module.scss";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { RouteComponentProps } from "react-router-dom";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import CardMedia from "@mui/material/CardMedia";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
-import Chip from "@mui/material/Chip";
-import Stack from "@mui/material/Stack";
-import NoImage from "../images/noImage.png";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { db } from "../firebase";
 import {
-  Firestore,
   collection,
   getDocs,
   getDoc,
-  addDoc,
   doc,
-  deleteDoc,
-  getDocFromCache,
+  query,
+  where,
 } from "firebase/firestore";
-import { NavLink } from "react-router-dom";
 import { ProgrammingLanguages } from "../Type";
-import Paper from "@mui/material/Paper";
-import { styled } from "@mui/material/styles";
 import { CardProfile } from "../components/CardProfile";
 
 type id = {
@@ -80,12 +65,19 @@ const Team: React.FC<PageProps> = (prop) => {
   }, []);
 
   useEffect(() => {
-    //タップされたuserの情報を取得する
+    //タップされたuser得意なプログラミング言語を取得する
     let unmounted: boolean = false;
     if (id) {
+      //idと紐ずくデータを取得
+      const q = query(
+        ProgrammingLanguagesCollectionRef,
+        where("uid", "==", id)
+      );
       const getProgrammingLanguages = async () => {
-        const data = await getDocs(ProgrammingLanguagesCollectionRef);
-        setProgrammingLanguages(data.docs.map((doc) => ({ ...doc.data() })));
+        const querySnapshot = await getDocs(q);
+        setProgrammingLanguages(
+          querySnapshot.docs.map((doc) => ({ ...doc.data() }))
+        );
       };
       if (!unmounted) {
         getProgrammingLanguages();
