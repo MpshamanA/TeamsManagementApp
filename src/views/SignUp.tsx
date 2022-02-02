@@ -16,22 +16,7 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { User } from "../Type";
 import { Link } from "react-router-dom";
 import { db } from "../firebase";
-
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      {"Future SQUARE "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
+import { Copyright } from "../components/Copyright";
 
 const theme = createTheme();
 
@@ -68,7 +53,7 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
         name: name,
         position: position,
         email: email,
-        CareerPlan: "NoData",
+        careerPlan: "NoData",
       });
     } catch (error) {
       alert(error);

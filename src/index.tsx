@@ -12,6 +12,7 @@ import Qa from "./views/Qa";
 import SignUp from "./views/SignUp";
 import { Route, BrowserRouter } from "react-router-dom";
 import SignIn from "./views/SignIn";
+import EditProfile from "./views/EditProfile";
 
 //routeの設定
 ReactDOM.render(
@@ -27,6 +28,7 @@ ReactDOM.render(
         <Route exact path="/qa" component={Qa} />
         <Route exact path="/signUp" component={SignUp} />
         <Route exact path="/signIn" component={SignIn} />
+        <Route exact path="/editProfile" component={EditProfile} />
       </div>
     </BrowserRouter>
   </React.StrictMode>,

@@ -39,7 +39,19 @@ export const CardProfile: React.FC<Props> = ({
             支店:{userPositon}
           </Typography>
           <Typography gutterBottom variant="h5" component="div">
-            得意な技術
+            経験年数
+          </Typography>
+          <Typography variant="body2" component="div" color="text.secondary">
+            NoData
+          </Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            1番好きなフェーズ(要件定義～基本設計など)
+          </Typography>
+          <Typography variant="body2" component="div" color="text.secondary">
+            NoData
+          </Typography>
+          <Typography gutterBottom variant="h5" component="div">
+            経験してきた言語/DB/OS/ツール
           </Typography>
         </CardContent>
         <CardContent sx={{ p: 0, pl: 2 }}>

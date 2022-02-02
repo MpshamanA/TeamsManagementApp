@@ -9,6 +9,7 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import * as H from "history";
+import { NavLink } from "react-router-dom";
 
 type PropType = {
   history: H.History;
@@ -17,6 +18,9 @@ export const Header: React.FC<PropType> = ({ history }) => {
   const auth = getAuth();
   // ユーザー情報を保持する
   const user = auth.currentUser;
+
+  //uidは下記で取れる
+  // console.log(user?.uid);
 
   const handoleSignOut = async () => {
     try {
@@ -47,14 +51,16 @@ export const Header: React.FC<PropType> = ({ history }) => {
           <Typography component="h1" variant="h5" pr={3} sx={{ color: "#000" }}>
             {user?.email}
           </Typography>
-          <Button
-            variant="contained"
-            size="small"
-            color="primary"
-            sx={{ marginRight: 3 }}
-          >
-            Edit Profile
-          </Button>
+          <NavLink exact to={"/editProfile"} className="link-bar-none">
+            <Button
+              variant="contained"
+              size="small"
+              color="primary"
+              sx={{ marginRight: 3 }}
+            >
+              Edit Profile
+            </Button>
+          </NavLink>
           <Button
             variant="contained"
             size="small"

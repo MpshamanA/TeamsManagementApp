@@ -12,7 +12,9 @@ export type User = {
   position: string;
   email: string;
   password: string;
-  CareerPlan?: string;
+  yearsExperience?: string;
+
+  careerPlan?: string;
 };
 
 //一旦全部NULL許容
