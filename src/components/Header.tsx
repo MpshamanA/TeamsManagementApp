@@ -33,7 +33,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
 
   return (
     <Box sx={{ flexGrow: 1, backgroundColor: "white" }}>
-      <AppBar position="static" sx={{ backgroundColor: "#fff" }}>
+      <AppBar position="static" sx={{ backgroundColor: "#fff", boxShadow: 0 }}>
         <Toolbar>
           <IconButton
             size="large"

@@ -10,6 +10,10 @@ import { NavLink } from "react-router-dom";
 import Card from "@mui/material/Card";
 import { minWidth } from "@mui/system";
 
+const current = {
+  background: "rgba(76, 165, 158, 0.5)",
+};
+
 const Teams: React.FC<RouteComponentProps> = (prop) => {
   const [users, setUsers] = useState(Array());
   const usersCollectionRef = collection(db, "Users");
@@ -47,11 +51,12 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
           >
             <Card
               sx={{
-                backgroundColor: "#eee",
                 m: "10px",
                 p: "10px",
-                minWidth: "415px",
+                minWidth: "430px",
+                maxWidth: "430px",
               }}
+              style={current}
             >
               <CardItem userName={user.name} position={user.position} />
             </Card>

@@ -27,7 +27,9 @@ const Team: React.FC<PageProps> = (prop) => {
   const id: string = prop.match.params.id.replace(/[\"]/g, "");
   const [userName, setUserName] = useState("");
   const [userPositon, setUserPositon] = useState("");
-  const [careerPlan, setCareerPlan] = useState("NoData");
+  const [yearsExperience, setYearsExperience] = useState("");
+  const [favoritePhase, setFavoritePhase] = useState("");
+  const [careerPlan, setCareerPlan] = useState("");
   const [programmingLanguages, setProgrammingLanguages] = useState<
     ProgrammingLanguages[]
   >([]);
@@ -50,7 +52,9 @@ const Team: React.FC<PageProps> = (prop) => {
           //現在ログインしているユーザーの情報を取得する
           setUserName(docSnap.data().name);
           setUserPositon(docSnap.data().position);
-          setCareerPlan(docSnap.data().CareerPlan);
+          setYearsExperience(docSnap.data().yearsExperience);
+          setFavoritePhase(docSnap.data().favoritePhase);
+          setCareerPlan(docSnap.data().careerPlan);
         } else {
           setUserName("NULL");
         }
@@ -100,7 +104,9 @@ const Team: React.FC<PageProps> = (prop) => {
         <CardProfile
           userName={userName}
           userPositon={userPositon}
+          yearsExperience={yearsExperience}
           careerPlan={careerPlan}
+          favoritePhase={favoritePhase}
           programmingLanguages={programmingLanguages}
         />
       </div>

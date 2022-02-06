@@ -13,7 +13,7 @@ export type User = {
   email: string;
   password: string;
   yearsExperience?: string;
-
+  favoritePhase?: string;
   careerPlan?: string;
 };
 

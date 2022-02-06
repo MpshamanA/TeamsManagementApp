@@ -1,15 +1,14 @@
-import * as React from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { RouteComponentProps } from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
-import { collection, setDoc, doc, getDocs } from "firebase/firestore";
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
 import TextField from "@mui/material/TextField";
 import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import PermIdentitySharpIcon from "@mui/icons-material/PermIdentitySharp";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
@@ -20,6 +19,15 @@ import { Copyright } from "../components/Copyright";
 import { Side } from "../components/Side";
 import { Header } from "../components/Header";
 import style from "../css/common.module.scss";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  setDoc,
+  doc,
+  query,
+  where,
+} from "firebase/firestore";
 
 const theme = createTheme();
 
@@ -29,26 +37,26 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
     register,
     formState: { errors },
   } = useForm<User>();
+  const [user, setUser] = useState(Object);
 
   const auth = getAuth();
   //プルフィールを編集する場合認証されてるユーザーのため
   const uid: any = auth.currentUser!.uid;
   //ユーザー情報を登録するコレクションを設定
   const usersCollectionRef = collection(db, "Users");
+
   //required: trueにすることによってデータを取得する
   const handleEditProfile = async (data: User) => {
-    const { name, position, yearsExperience, careerPlan } = data;
+    const { yearsExperience, favoritePhase, careerPlan } = data;
 
     try {
-      const users = await getDocs(usersCollectionRef);
       //認証情報とstore情報をuidで紐付け
       const cityRef = doc(usersCollectionRef, uid);
       await setDoc(
         cityRef,
         {
-          name: name,
-          position: position,
           yearsExperience: yearsExperience,
+          favoritePhase: favoritePhase,
           careerPlan: careerPlan,
         },
         { merge: true }
@@ -57,6 +65,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
       alert(error);
       return;
     }
+    props.history.push(`/teams/${uid}`);
   };
   return (
     <div className={style.grid}>
@@ -78,8 +87,8 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                 alignItems: "center",
               }}
             >
-              <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-                <LockOutlinedIcon />
+              <Avatar sx={{ m: 1, bgcolor: "secondary" }}>
+                <PermIdentitySharpIcon />
               </Avatar>
               <Typography component="h1" variant="h5">
                 プロフィールの編集・追加
@@ -90,35 +99,8 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                 sx={{ mt: 3 }}
                 onSubmit={handleSubmit(handleEditProfile)}
               >
-                <Grid container spacing={2}>
+                <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
-                    <TextField
-                      autoComplete="given-name"
-                      required
-                      fullWidth
-                      id="Name"
-                      label="名前"
-                      autoFocus
-                      value="test"
-                      {...register("name", {
-                        required: true,
-                      })}
-                    />
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="position"
-                      label="支店"
-                      value="test"
-                      autoComplete="position"
-                      {...register("position", {
-                        required: true,
-                      })}
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
                     <TextField
                       required
                       fullWidth
@@ -130,17 +112,17 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                       })}
                     />
                   </Grid>
-                  {/* <Grid item xs={12}>
+                  <Grid item xs={12}>
                     <TextField
                       required
                       fullWidth
-                      label="経験してきた言語/DB/OS/ツール"
-                      id="favoriteProcess"
-                      {...register("favoriteProcess", {
+                      label="1番好きなフェーズ(要件定義～基本設計など)"
+                      id="favoritePhase"
+                      {...register("favoritePhase", {
                         required: true,
                       })}
                     />
-                  </Grid> */}
+                  </Grid>
                   <Grid item xs={12}>
                     <TextField
                       required
@@ -155,17 +137,11 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                 </Grid>
                 <Button
                   type="submit"
-                  fullWidth
                   variant="contained"
-                  sx={{ mt: 3, mb: 2 }}
+                  sx={{ mt: 3, mb: 2, alignItems: "center" }}
                 >
-                  新規登録
+                  編集完了
                 </Button>
-                <Grid container justifyContent="flex-end">
-                  <Grid item>
-                    <Link to={"/signIn"}>アカウントをお持ちの方はこちら</Link>
-                  </Grid>
-                </Grid>
               </Box>
             </Box>
             <Copyright sx={{ mt: 5 }} />

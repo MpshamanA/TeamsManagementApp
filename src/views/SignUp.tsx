@@ -53,6 +53,7 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
         name: name,
         position: position,
         email: email,
+        yearsExperience: "NoData",
         careerPlan: "NoData",
       });
     } catch (error) {

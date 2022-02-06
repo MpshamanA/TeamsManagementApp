@@ -1,6 +1,7 @@
 .side-menu {
   color: rgb(25, 80, 117);
-  border-bottom: solid 1px #ddd;
+
+  /* border-bottom: solid 1px #ddd; */
 }
 
 .side-ul {
@@ -10,15 +11,15 @@
 }
 .order-1 {
   order: -1;
-  flex-basis: 220px;
-  width: 220px;
-  border-right: 1px solid rgb(20, 163, 96);
+  flex-basis: 240px;
+  width: 240px;
+  /* border-right: 1px solid rgb(20, 163, 96);
   border-image: linear-gradient(
     to bottom,
     rgb(20, 163, 96) 0%,
     rgb(4, 154, 255) 100%
   );
-  border-image-slice: 1;
+  border-image-slice: 1; */
   min-height: 100vh;
   /* position: fixed; */
 }
@@ -33,4 +34,8 @@
 nav {
   position: sticky;
   top: 0px;
+}
+nav li:hover {
+  background-color: rgba(76, 165, 158, 0.1);
+  border-radius: 13px;
 }

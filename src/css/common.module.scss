@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: 220px 1fr;
+  grid-template-columns: 240px 1fr;
   grid-template-rows: 70px 1fr;
   .header {
     grid-column: 2 / 3;
@@ -21,11 +21,17 @@
     margin: 10px;
     display: flex;
     flex-wrap: wrap;
+    background-color: rgba($color: #757e00b0, $alpha: 0.1);
+    min-height: 100vh;
+    border-radius: 20px;
   }
 
   .mainItemList {
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     margin: 10px;
+    // background-color: rgba($color: #5baf16b0, $alpha: 0.2);
+    min-height: 100vh;
+    border-radius: 20px;
   }
 }
