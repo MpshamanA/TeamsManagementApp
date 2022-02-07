@@ -4,12 +4,12 @@ import { NavLink } from "react-router-dom";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import GroupsIcon from "@mui/icons-material/Groups";
-import HomeIcon from "@mui/icons-material/Home";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import AutoAwesomeMotionRoundedIcon from "@mui/icons-material/AutoAwesomeMotionRounded";
+import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
 import CalendarViewMonthRoundedIcon from "@mui/icons-material/CalendarViewMonthRounded";
-import RestaurantIcon from "@mui/icons-material/Restaurant";
+import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
 import Box from "@mui/material/Box";
 
 //選択されてるタグを取得し色を変える
@@ -44,7 +44,7 @@ export const Side = () => {
                     }}
                   >
                     <ListItemIcon>
-                      <HomeIcon />
+                      <HomeOutlinedIcon />
                     </ListItemIcon>
                     <ListItemText
                       primary="HOME"
@@ -68,7 +68,7 @@ export const Side = () => {
                     sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
                   >
                     <ListItemIcon>
-                      <GroupsIcon />
+                      <GroupsOutlinedIcon />
                     </ListItemIcon>
                     <ListItemText
                       primary="Teams"
@@ -92,7 +92,7 @@ export const Side = () => {
                     sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
                   >
                     <ListItemIcon>
-                      <AutoAwesomeMotionRoundedIcon />
+                      <AutoAwesomeMotionOutlinedIcon />
                     </ListItemIcon>
                     <ListItemText
                       primary="福利厚生"
@@ -116,7 +116,7 @@ export const Side = () => {
                     sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
                   >
                     <ListItemIcon>
-                      <RestaurantIcon />
+                      <DinnerDiningOutlinedIcon />
                     </ListItemIcon>
                     <ListItemText
                       primary="チケットレストラン"

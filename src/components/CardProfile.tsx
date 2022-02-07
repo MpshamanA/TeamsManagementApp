@@ -5,6 +5,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
+import Grid from "@mui/material/Grid";
 import NoImage from "../images/noImage.png";
 import { NavLink } from "react-router-dom";
 import { ProgrammingLanguages } from "../Type";
@@ -68,7 +69,11 @@ export const CardProfile: React.FC<Props> = ({
                 <Chip
                   key={e.id}
                   label={e.programmingLanguage}
-                  sx={{ mr: "10px", backgroundColor: "#3399FF", color: "#fff" }}
+                  sx={{
+                    mr: "10px",
+                    backgroundColor: "#3399FF",
+                    color: "#fff",
+                  }}
                 />
               ))
             ) : (

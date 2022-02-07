@@ -128,7 +128,9 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                       required
                       fullWidth
                       label="キャリアプラン"
-                      id="favoriteProcess"
+                      multiline
+                      rows={4}
+                      id="careerPlan"
                       {...register("careerPlan", {
                         required: true,
                       })}

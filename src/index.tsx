@@ -2,17 +2,17 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import Teams from "./views/Teams";
-import Team from "./views/Team";
-import benefits from "./views/Benefits";
-import Calendar from "./views/Calendar";
-import AvailableStores from "./views/AvailableStores";
+import Teams from "./pages/Teams";
+import Team from "./pages/Team";
+import benefits from "./pages/Benefits";
+import Calendar from "./pages/Calendar";
+import AvailableStores from "./pages/AvailableStores";
 import reportWebVitals from "./reportWebVitals";
-import Qa from "./views/Qa";
-import SignUp from "./views/SignUp";
+import Qa from "./pages/Qa";
+import SignUp from "./pages/SignUp";
 import { Route, BrowserRouter } from "react-router-dom";
-import SignIn from "./views/SignIn";
-import EditProfile from "./views/EditProfile";
+import SignIn from "./pages/SignIn";
+import EditProfile from "./pages/EditProfile";
 
 //routeの設定
 ReactDOM.render(

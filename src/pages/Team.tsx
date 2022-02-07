@@ -14,6 +14,7 @@ import {
 } from "firebase/firestore";
 import { ProgrammingLanguages } from "../Type";
 import { CardProfile } from "../components/CardProfile";
+import Grid from "@mui/material/Grid";
 
 type id = {
   id: string;
@@ -101,14 +102,16 @@ const Team: React.FC<PageProps> = (prop) => {
         <Header history={prop.history} />
       </div>
       <div className={style.mainTeams}>
-        <CardProfile
-          userName={userName}
-          userPositon={userPositon}
-          yearsExperience={yearsExperience}
-          careerPlan={careerPlan}
-          favoritePhase={favoritePhase}
-          programmingLanguages={programmingLanguages}
-        />
+        <Grid container justifyContent="center" sx={{ mt: "20px" }}>
+          <CardProfile
+            userName={userName}
+            userPositon={userPositon}
+            yearsExperience={yearsExperience}
+            careerPlan={careerPlan}
+            favoritePhase={favoritePhase}
+            programmingLanguages={programmingLanguages}
+          />
+        </Grid>
       </div>
     </div>
   );
