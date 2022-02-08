@@ -1,7 +1,8 @@
-import { DateProfileGenerator } from "@fullcalendar/react";
-import React, { useState } from "react";
-import { Store } from "../Type";
+import React from "react";
+
 import Button from "@mui/material/Button";
+
+import { Store } from "../Type";
 
 type Props = {
   store: Store;

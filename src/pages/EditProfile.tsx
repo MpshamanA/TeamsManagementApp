@@ -1,33 +1,30 @@
-import React, { useEffect, useState } from "react";
+import style from "../css/common.module.scss";
+
+import React from "react";
+
 import { useForm } from "react-hook-form";
+
 import { RouteComponentProps } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import PermIdentitySharpIcon from "@mui/icons-material/PermIdentitySharp";
-import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import { User } from "../Type";
-import { Link } from "react-router-dom";
-import { db } from "../firebase";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import PermIdentitySharpIcon from "@mui/icons-material/PermIdentitySharp";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+
 import { Copyright } from "../components/Copyright";
-import { Side } from "../components/Side";
 import { Header } from "../components/Header";
-import style from "../css/common.module.scss";
-import {
-  collection,
-  getDocs,
-  getDoc,
-  setDoc,
-  doc,
-  query,
-  where,
-} from "firebase/firestore";
+import { Side } from "../components/Side";
+import { User } from "../Type";
+
+import { collection, setDoc, doc } from "firebase/firestore";
+import { db } from "../firebase";
+import { getAuth } from "firebase/auth";
 
 const theme = createTheme();
 
@@ -37,7 +34,6 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
     register,
     formState: { errors },
   } = useForm<User>();
-  const [user, setUser] = useState(Object);
 
   const auth = getAuth();
   //プルフィールを編集する場合認証されてるユーザーのため

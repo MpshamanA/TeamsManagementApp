@@ -1,16 +1,18 @@
 import "../css/side.css";
-import logo from "../logo.png";
+
 import { NavLink } from "react-router-dom";
+
+import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
+import Box from "@mui/material/Box";
+import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
+import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
+import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import GroupsOutlinedIcon from "@mui/icons-material/GroupsOutlined";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
-import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
-import CalendarViewMonthRoundedIcon from "@mui/icons-material/CalendarViewMonthRounded";
-import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
-import Box from "@mui/material/Box";
+
+import logo from "../logo.png";
 
 //選択されてるタグを取得し色を変える
 const current = {

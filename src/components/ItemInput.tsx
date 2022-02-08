@@ -1,7 +1,10 @@
-import React, { useState } from "react";
 import "../css/Items.css";
-import { Store } from "../Type";
+
+import React from "react";
+
 import Button from "@mui/material/Button";
+
+import { Store } from "../Type";
 
 type Props = {
   stores: Store[];

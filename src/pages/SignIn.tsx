@@ -1,19 +1,22 @@
-import * as React from "react";
-import { RouteComponentProps } from "react-router-dom";
+import React, { useEffect } from "react";
+
+import { RouteComponentProps, Link } from "react-router-dom";
+
 import { useForm } from "react-hook-form";
+
 import Avatar from "@mui/material/Avatar";
-import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import TextField from "@mui/material/TextField";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
-import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
-import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import CssBaseline from "@mui/material/CssBaseline";
+import Grid from "@mui/material/Grid";
+import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
+import TextField from "@mui/material/TextField";
+import Typography from "@mui/material/Typography";
+
 import { User } from "../Type";
+
 import {
   getAuth,
   signInWithEmailAndPassword,

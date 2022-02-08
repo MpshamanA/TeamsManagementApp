@@ -1,23 +1,25 @@
-import React, { useState, useEffect, useLayoutEffect } from "react";
+import "../css/AvailableStores.css";
+import style from "../css/common.module.scss";
+
+import React, { useState, useEffect } from "react";
+
+import { RouteComponentProps } from "react-router-dom";
+
+import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { ItemList } from "../components/ItemList";
 import { ItemInput } from "../components/ItemInput";
-import "../css/AvailableStores.css";
+import { db } from "../firebase";
+
 import {
-  Firestore,
   collection,
   getDocs,
   getDoc,
   addDoc,
   doc,
   deleteDoc,
-  getDocFromCache,
 } from "firebase/firestore";
-import { db } from "../firebase";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import { RouteComponentProps } from "react-router-dom";
-import style from "../css/common.module.scss";
-import { Header } from "../components/Header";
 
 const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   const auth = getAuth();

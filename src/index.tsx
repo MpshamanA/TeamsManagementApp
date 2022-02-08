@@ -5,7 +5,6 @@ import App from "./App";
 import Teams from "./pages/Teams";
 import Team from "./pages/Team";
 import benefits from "./pages/Benefits";
-import Calendar from "./pages/Calendar";
 import AvailableStores from "./pages/AvailableStores";
 import reportWebVitals from "./reportWebVitals";
 import Qa from "./pages/Qa";
@@ -23,7 +22,6 @@ ReactDOM.render(
         <Route exact path="/teams" component={Teams} />
         <Route exact path="/teams/:id" component={Team} />
         <Route exact path="/benefits" component={benefits} />
-        <Route exact path="/calendar" component={Calendar} />
         <Route exact path="/availableStores" component={AvailableStores} />
         <Route exact path="/qa" component={Qa} />
         <Route exact path="/signUp" component={SignUp} />

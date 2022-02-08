@@ -1,8 +1,13 @@
-import React, { useState, useEffect } from "react";
 import style from "../css/common.module.scss";
-import { Header } from "../components/Header";
-import { Side } from "../components/Side";
+
+import React, { useState, useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
+
+import { CardProfile } from "../components/CardProfile";
+import { Header } from "../components/Header";
+import { ProgrammingLanguages } from "../Type";
+import { Side } from "../components/Side";
+
 import { db } from "../firebase";
 import {
   collection,
@@ -12,8 +17,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { ProgrammingLanguages } from "../Type";
-import { CardProfile } from "../components/CardProfile";
+
 import Grid from "@mui/material/Grid";
 
 type id = {

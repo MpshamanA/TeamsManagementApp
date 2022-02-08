@@ -1,15 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+
+import { NavLink } from "react-router-dom";
+
 import Card from "@mui/material/Card";
+import Box from "@mui/material/Box";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
-import Typography from "@mui/material/Typography";
 import Chip from "@mui/material/Chip";
-import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+
 import NoImage from "../images/noImage.png";
-import { NavLink } from "react-router-dom";
 import { ProgrammingLanguages } from "../Type";
-import Box from "@mui/material/Box";
 
 type Props = {
   userName: string;

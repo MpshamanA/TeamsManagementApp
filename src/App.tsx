@@ -1,19 +1,20 @@
-import { useLayoutEffect, useState } from "react";
 import "./css/App.css";
-import { Side } from "./components/Side";
-import { Main } from "./pages/Main";
-import { RouteComponentProps } from "react-router-dom";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import style from "./css/common.module.scss";
+
+import { useLayoutEffect } from "react";
+
+import { RouteComponentProps } from "react-router-dom";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { Header } from "./components/Header";
+import { Side } from "./components/Side";
+
+import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
-import Card from "@mui/material/Card";
 
 const App: React.FC<RouteComponentProps> = (props) => {
   const auth = getAuth();
-  // ユーザー情報を保持する
-  const user = auth.currentUser;
   //ユーザー判定 ユーザー情報を保持していない場合新規登録画面へ
   useLayoutEffect(() => {
     //メモリリーク回避：非同期処理が完了する前にコンポーネントがアンマウントされると、ステートは更新されない

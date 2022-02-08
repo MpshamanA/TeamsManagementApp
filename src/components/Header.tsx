@@ -1,15 +1,16 @@
-import { useLayoutEffect, useState } from "react";
-import { RouteComponentProps } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
-import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+
+import { getAuth, signOut } from "firebase/auth";
+
 import * as H from "history";
-import { NavLink } from "react-router-dom";
 
 type PropType = {
   history: H.History;

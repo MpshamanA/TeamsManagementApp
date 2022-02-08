@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from "react";
 import style from "../css/common.module.scss";
+
+import React, { useState, useEffect } from "react";
+
+import { RouteComponentProps, NavLink } from "react-router-dom";
+
+import { CardItem } from "../components/CardItem";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
-import { RouteComponentProps } from "react-router-dom";
-import { CardItem } from "../components/CardItem";
+
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
-import { NavLink } from "react-router-dom";
+
 import Card from "@mui/material/Card";
-import { minWidth } from "@mui/system";
 
 const current = {
   background: "rgba(76, 165, 158, 0.5)",
