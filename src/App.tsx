@@ -39,25 +39,86 @@ const App: React.FC<RouteComponentProps> = (props) => {
         <Header history={props.history} />
       </div>
       <div className={style.mainTeams}>
-        <Grid container justifyContent="center" sx={{ mt: "20px" }}>
+        <Grid>
           <Card
             sx={{
-              minWidth: "430px",
-              maxWidth: "430px",
-              maxHeight: "150px",
+              mb: "10px",
+              padding: "20px",
+              width: "430px",
+              height: "170px",
+              justify: "center",
+              textAlign: "center",
             }}
           >
-            <Grid container sx={{ m: 2 }}>
-              <Typography gutterBottom variant="h5" component="div">
-                フューチャー・スクウェア株式会社
-              </Typography>
-              <Typography gutterBottom variant="h5" component="div">
-                （Future SQUARE,Inc.）
-              </Typography>
-              <Typography gutterBottom variant="h5" component="div">
-                代表取締役 岩本 雄太
-              </Typography>
-            </Grid>
+            <Typography gutterBottom variant="h5" component="div">
+              フューチャー・スクウェア株式会社
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              Future SQUARE,Inc.
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              代表取締役 岩本 雄太
+            </Typography>
+          </Card>
+          <Card
+            sx={{
+              mb: "10px",
+              padding: "20px",
+              width: "430px",
+              height: "170px",
+              justify: "center",
+              textAlign: "center",
+            }}
+          >
+            <Typography gutterBottom variant="h5" component="div">
+              フューチャー・スクウェア株式会社
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              Future SQUARE,Inc.
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              代表取締役 岩本 雄太
+            </Typography>
+          </Card>
+          <Card
+            sx={{
+              mb: "10px",
+              padding: "20px",
+              width: "430px",
+              height: "170px",
+              justify: "center",
+              textAlign: "center",
+            }}
+          >
+            <Typography gutterBottom variant="h5" component="div">
+              フューチャー・スクウェア株式会社
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              Future SQUARE,Inc.
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              代表取締役 岩本 雄太
+            </Typography>
+          </Card>
+          <Card
+            sx={{
+              mb: "10px",
+              padding: "20px",
+              width: "430px",
+              height: "170px",
+              justify: "center",
+              textAlign: "center",
+            }}
+          >
+            <Typography gutterBottom variant="h5" component="div">
+              フューチャー・スクウェア株式会社
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              Future SQUARE,Inc.
+            </Typography>
+            <Typography gutterBottom variant="h5" component="div">
+              代表取締役 岩本 雄太
+            </Typography>
           </Card>
         </Grid>
       </div>
