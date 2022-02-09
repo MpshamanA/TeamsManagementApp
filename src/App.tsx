@@ -97,7 +97,7 @@ const App: React.FC<RouteComponentProps> = (props) => {
               Future SQUARE,Inc.
             </Typography>
             <Typography gutterBottom variant="h5" component="div">
-              代表取締役 岩本 雄太
+              代表取締役 岩本 雄太 test
             </Typography>
           </Card>
         </Grid>
