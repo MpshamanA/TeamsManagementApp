@@ -100,26 +100,6 @@ const App: React.FC<RouteComponentProps> = (props) => {
               代表取締役 岩本 雄太
             </Typography>
           </Card>
-          <Card
-            sx={{
-              mb: "10px",
-              padding: "20px",
-              width: "430px",
-              height: "170px",
-              justify: "center",
-              textAlign: "center",
-            }}
-          >
-            <Typography gutterBottom variant="h5" component="div">
-              フューチャー・スクウェア株式会社
-            </Typography>
-            <Typography gutterBottom variant="h5" component="div">
-              Future SQUARE,Inc.
-            </Typography>
-            <Typography gutterBottom variant="h5" component="div">
-              代表取締役 岩本 雄太
-            </Typography>
-          </Card>
         </Grid>
       </div>
     </div>
