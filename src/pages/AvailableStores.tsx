@@ -10,6 +10,7 @@ import { Side } from "../components/Side";
 import { ItemList } from "../components/ItemList";
 import { ItemInput } from "../components/ItemInput";
 import { db } from "../firebase";
+import { auth } from "../firebase";
 
 import {
   collection,
@@ -19,10 +20,9 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
 
 const AvailableStores: React.FC<RouteComponentProps> = (props) => {
-  const auth = getAuth();
   const [stores, setStores] = useState(Array());
   //ログインしてるユーザーネーム
   const [userName, setUserName] = useState("");

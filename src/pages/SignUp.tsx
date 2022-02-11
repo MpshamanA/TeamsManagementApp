@@ -1,8 +1,11 @@
 import * as React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import { RouteComponentProps } from "react-router-dom";
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+
+import { createUserWithEmailAndPassword } from "firebase/auth";
 import { collection, setDoc, doc, getDocs } from "firebase/firestore";
+
 import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -13,8 +16,9 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+
 import { User } from "../Type";
-import { Link } from "react-router-dom";
+import { auth } from "../firebase";
 import { db } from "../firebase";
 import { Copyright } from "../components/Copyright";
 
@@ -28,7 +32,6 @@ const SignUp: React.FC<RouteComponentProps> = (props) => {
   } = useForm<User>();
 
   //新規登録処理
-  const auth = getAuth();
   //ユーザー情報を登録するコレクションを設定
   const usersCollectionRef = collection(db, "Users");
   //required: trueにすることによってデータを取得する

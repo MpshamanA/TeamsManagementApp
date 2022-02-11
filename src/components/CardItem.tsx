@@ -20,10 +20,9 @@ export const CardItem: React.FC<Props> = ({ userName, position }) => {
   return (
     <Card
       sx={{
-        minWidth: 300,
-        maxWidth: 500,
-        m: 1,
-        minHeight: 150,
+        color: "rgb(25, 80, 117)",
+        m: "10px",
+        width: "420px",
       }}
     >
       <CardContent sx={{ display: "flex", padding: "24px" }}>
@@ -31,7 +30,7 @@ export const CardItem: React.FC<Props> = ({ userName, position }) => {
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {position}
           </Typography>
-          <Typography variant="h5" component="div">
+          <Typography variant="h5" component="div" sx={{ fontWeight: "bold" }}>
             {userName}
           </Typography>
         </CardContent>

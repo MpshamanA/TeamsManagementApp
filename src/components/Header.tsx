@@ -1,3 +1,5 @@
+import React, { useEffect, useState, createContext } from "react";
+
 import { NavLink } from "react-router-dom";
 
 import AppBar from "@mui/material/AppBar";
@@ -8,20 +10,35 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import { getAuth, signOut } from "firebase/auth";
+import { onAuthStateChanged } from "firebase/auth";
+import { signOut } from "firebase/auth";
+
+import { auth } from "../firebase";
 
 import * as H from "history";
 
 type PropType = {
   history: H.History;
 };
+export const sideManu = createContext(
+  {} as {
+    toggle: boolean;
+    setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+);
 export const Header: React.FC<PropType> = ({ history }) => {
-  const auth = getAuth();
+  //サイドメニューの切り替え
+  const [toggle, setToggle] = useState(true);
+  const hundleSidemanuChange = () => {};
+  const [user, setUser] = useState(Object);
   // ユーザー情報を保持する
-  const user = auth.currentUser;
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      setUser(user);
+    });
+  }, []);
 
   //uidは下記で取れる
-  // console.log(user?.uid);
 
   const handoleSignOut = async () => {
     try {
@@ -50,7 +67,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
             sx={{ flexGrow: 1 }}
           ></Typography>
           <Typography component="h1" variant="h5" pr={3} sx={{ color: "#000" }}>
-            {user?.email}
+            {user.email}
           </Typography>
           <NavLink exact to={"/editProfile"} className="link-bar-none">
             <Button

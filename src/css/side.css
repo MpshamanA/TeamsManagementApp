@@ -1,9 +1,6 @@
 .side-menu {
   color: rgb(25, 80, 117);
-
-  /* border-bottom: solid 1px #ddd; */
 }
-
 .side-ul {
   list-style-type: none;
   padding: 0;
@@ -12,16 +9,7 @@
 .order-1 {
   order: -1;
   flex-basis: 240px;
-  width: 240px;
-  /* border-right: 1px solid rgb(20, 163, 96);
-  border-image: linear-gradient(
-    to bottom,
-    rgb(20, 163, 96) 0%,
-    rgb(4, 154, 255) 100%
-  );
-  border-image-slice: 1; */
   min-height: 100vh;
-  /* position: fixed; */
 }
 .link-bar-none {
   text-decoration: none;
@@ -31,11 +19,15 @@
   padding: 12px 12px;
 }
 
+.img-icon {
+  width: 50px;
+  padding: 15px 15px;
+}
 nav {
   position: sticky;
   top: 0px;
 }
 nav li:hover {
-  background-color: rgba(76, 165, 158, 0.1);
+  background-color: rgba(108, 228, 218, 0.1);
   border-radius: 13px;
 }

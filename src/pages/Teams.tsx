@@ -11,12 +11,6 @@ import { Side } from "../components/Side";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
-import Card from "@mui/material/Card";
-
-const current = {
-  background: "rgba(76, 165, 158, 0.5)",
-};
-
 const Teams: React.FC<RouteComponentProps> = (prop) => {
   const [users, setUsers] = useState(Array());
   const usersCollectionRef = collection(db, "Users");
@@ -52,17 +46,7 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
             className="link-bar-none"
             key={user.id}
           >
-            <Card
-              sx={{
-                m: "10px",
-                p: "10px",
-                minWidth: "430px",
-                maxWidth: "430px",
-              }}
-              style={current}
-            >
-              <CardItem userName={user.name} position={user.position} />
-            </Card>
+            <CardItem userName={user.name} position={user.position} />
           </NavLink>
         ))}
       </div>

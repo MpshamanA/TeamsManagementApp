@@ -23,3 +23,9 @@ export type ProgrammingLanguages = {
   uid?: string;
   programmingLanguage?: string;
 };
+
+export type Branch = {
+  id: number;
+  branch: string;
+  address: string;
+};

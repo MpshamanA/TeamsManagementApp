@@ -24,7 +24,7 @@ import { User } from "../Type";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
-import { getAuth } from "firebase/auth";
+import { auth } from "../firebase";
 
 const theme = createTheme();
 
@@ -35,7 +35,6 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
     formState: { errors },
   } = useForm<User>();
 
-  const auth = getAuth();
   //プルフィールを編集する場合認証されてるユーザーのため
   const uid: any = auth.currentUser!.uid;
   //ユーザー情報を登録するコレクションを設定
