@@ -10,6 +10,7 @@
   order: -1;
   flex-basis: 240px;
   min-height: 100vh;
+  transition: 1s;
 }
 .link-bar-none {
   text-decoration: none;
@@ -21,7 +22,7 @@
 
 .img-icon {
   width: 50px;
-  padding: 15px 15px;
+  padding: 5px 12px;
 }
 nav {
   position: sticky;

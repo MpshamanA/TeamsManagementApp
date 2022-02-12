@@ -1,4 +1,4 @@
-import React, { createContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import "../css/side.css";
 
 import { NavLink } from "react-router-dom";
@@ -15,6 +15,8 @@ import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 
 import logo from "../images/logo.png";
 import icon from "../images/icon.png";
+
+import { sideManuContext } from "../App";
 //選択されてるタグを取得し色を変える
 const current = {
   textDecoration: "none",
@@ -23,15 +25,9 @@ const current = {
   display: "inline-block",
   borderRadius: "13px",
 };
-export const sideManu = createContext(
-  {} as {
-    toggle: boolean;
-    setToggle: React.Dispatch<React.SetStateAction<boolean>>;
-  }
-);
 
 export const Side = () => {
-  const [toggle, setToggle] = useState<boolean>(true);
+  const { toggle } = useContext(sideManuContext);
   return (
     <div className="order-1">
       {toggle ? (
@@ -181,8 +177,8 @@ export const Side = () => {
                   <li className="side-menu">
                     <ListItemButton
                       sx={{
-                        pt: 1.2,
-                        pb: 1.2,
+                        pt: 1.5,
+                        pb: 1.5,
                         borderRadius: "13px",
                       }}
                     >
@@ -202,7 +198,7 @@ export const Side = () => {
                 >
                   <li className="side-menu">
                     <ListItemButton
-                      sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
+                      sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
                     >
                       <ListItemIcon>
                         <GroupsOutlinedIcon />
@@ -220,7 +216,7 @@ export const Side = () => {
                 >
                   <li className="side-menu">
                     <ListItemButton
-                      sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
+                      sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
                     >
                       <ListItemIcon>
                         <AutoAwesomeMotionOutlinedIcon />
@@ -238,7 +234,7 @@ export const Side = () => {
                 >
                   <li className="side-menu">
                     <ListItemButton
-                      sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
+                      sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
                     >
                       <ListItemIcon>
                         <DinnerDiningOutlinedIcon />
@@ -256,7 +252,7 @@ export const Side = () => {
                 >
                   <li className="side-menu">
                     <ListItemButton
-                      sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
+                      sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
                     >
                       <ListItemIcon>
                         <QuestionMarkIcon />

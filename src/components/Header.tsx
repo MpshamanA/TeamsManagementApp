@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 
 import { NavLink } from "react-router-dom";
 
@@ -17,19 +17,18 @@ import { auth } from "../firebase";
 
 import * as H from "history";
 
+import { sideManuContext } from "../App";
+
 type PropType = {
   history: H.History;
 };
-export const sideManu = createContext(
-  {} as {
-    toggle: boolean;
-    setToggle: React.Dispatch<React.SetStateAction<boolean>>;
-  }
-);
+
 export const Header: React.FC<PropType> = ({ history }) => {
   //サイドメニューの切り替え
-  const [toggle, setToggle] = useState(true);
-  const hundleSidemanuChange = () => {};
+  const { toggle, setToggle } = useContext(sideManuContext);
+  const hundleSidemanuChange = () => {
+    setToggle(!toggle);
+  };
   const [user, setUser] = useState(Object);
   // ユーザー情報を保持する
   useEffect(() => {
@@ -58,6 +57,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
             edge="start"
             aria-label="menu"
             sx={{ mr: 2, color: "#000" }}
+            onClick={hundleSidemanuChange}
           >
             <MenuIcon />
           </IconButton>

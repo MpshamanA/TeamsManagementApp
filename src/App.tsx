@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createContext } from "react";
 import "./css/App.css";
 import style from "./css/common.module.scss";
 
@@ -19,6 +19,12 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
+export const sideManuContext = createContext(
+  {} as {
+    toggle: boolean;
+    setToggle: React.Dispatch<React.SetStateAction<boolean>>;
+  }
+);
 const App: React.FC<RouteComponentProps> = (props) => {
   const [toggle, setToggle] = useState<boolean>(true);
   //支店
@@ -63,10 +69,14 @@ const App: React.FC<RouteComponentProps> = (props) => {
   return (
     <div className={toggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
-        <Side />
+        <sideManuContext.Provider value={{ toggle, setToggle }}>
+          <Side />
+        </sideManuContext.Provider>
       </div>
       <div className={style.header}>
-        <Header history={props.history} />
+        <sideManuContext.Provider value={{ toggle, setToggle }}>
+          <Header history={props.history} />
+        </sideManuContext.Provider>
       </div>
       <div className={style.mainTeams}>
         <Grid sx={{ display: "flex" }}>
