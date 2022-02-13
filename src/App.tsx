@@ -12,10 +12,16 @@ import { auth } from "./firebase";
 import { Branch } from "./Type";
 import { Header } from "./components/Header";
 import icon from "./images/icon.png";
+import NoImage from "./images/noImage.png";
+import Tokyo from "./images/Tokyo.jpg";
+import Nagoya from "./images/Nagoya.jpg";
+import Osaka from "./images/Osaka.jpg";
+import Fukuoka from "./images/Fukuoka.jpg";
 import { Side } from "./components/Side";
 
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
+import GridItem from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
@@ -37,21 +43,25 @@ const App: React.FC<RouteComponentProps> = (props) => {
       id: 1,
       branch: "東京本社",
       address: "〒170-0013 東京都豊島区東池袋1-18-1 Hareza Tower20階",
+      imgUrl: Tokyo,
     },
     {
       id: 2,
       branch: "名古屋支店",
       address: "〒460-0008 愛知県名古屋市中区栄3-15-27 いちご栄ビル9階",
+      imgUrl: Nagoya,
     },
     {
       id: 3,
       branch: "大阪支店",
       address: "〒550-0005 大阪市西区西本町1-4-1 オリックス本町ビル4階",
+      imgUrl: Osaka,
     },
     {
       id: 4,
       branch: "福岡支店",
       address: "〒812-0011 福岡県福岡市博多区博多駅前二丁目1番1号",
+      imgUrl: Fukuoka,
     },
   ];
 
@@ -85,13 +95,12 @@ const App: React.FC<RouteComponentProps> = (props) => {
         />
       </div>
       <div className={style.mainTeams}>
-        <Grid sx={{ display: "flex" }}>
+        <Grid sx={{ textAlign: "center" }}>
           <Card
             sx={{
               mb: "10px",
               padding: "20px",
-              height: "263px",
-              minWidth: "430px",
+              minWidth: "1200px",
               justify: "center",
               textAlign: "center",
               color: "rgb(25, 80, 117)",
@@ -100,24 +109,26 @@ const App: React.FC<RouteComponentProps> = (props) => {
             <img src={icon} className="App-logo" alt="icon" />
             <Typography
               gutterBottom
-              variant="h5"
+              variant="h3"
               component="div"
               sx={{ fontWeight: "bold" }}
             >
               フューチャー・スクウェア株式会社
             </Typography>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h4" component="div">
               Future SQUARE,Inc.
             </Typography>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h4" component="div">
               代表取締役 岩本 雄太
             </Typography>
           </Card>
-          <Box sx={{ width: "100%", ml: "20px" }}>
+
+          <Box>
             <Grid
               container
               rowSpacing={3}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+              // justifyContent="center"
             >
               {branchs.map((branch) => (
                 <Grid item xs={6} key={branch.id}>
@@ -125,24 +136,36 @@ const App: React.FC<RouteComponentProps> = (props) => {
                     className="card-color"
                     sx={{
                       padding: "20px",
-                      width: "400px",
                       justify: "center",
                       textAlign: "center",
-                      height: "100px",
                       color: "rgb(25, 80, 117)",
                     }}
                   >
-                    <Typography
-                      gutterBottom
-                      variant="h5"
-                      component="div"
-                      sx={{ fontWeight: "bold" }}
-                    >
-                      {branch.branch}
-                    </Typography>
-                    <Typography gutterBottom variant="h6" component="div">
-                      {branch.address}
-                    </Typography>
+                    <Grid sx={{ display: "flex" }}>
+                      <img src={branch.imgUrl} className="test" alt="icon" />
+                      <Box
+                        component="div"
+                        sx={{
+                          display: "flex",
+                          justifyContent: "center",
+                          alignItems: "center",
+                        }}
+                      >
+                        <Box>
+                          <Typography
+                            gutterBottom
+                            variant="h5"
+                            component="div"
+                            sx={{ fontWeight: "bold" }}
+                          >
+                            {branch.branch}
+                          </Typography>
+                          <Typography gutterBottom variant="h6" component="div">
+                            {branch.address}
+                          </Typography>
+                        </Box>
+                      </Box>
+                    </Grid>
                   </Card>
                 </Grid>
               ))}

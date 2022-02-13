@@ -28,4 +28,5 @@ export type Branch = {
   id: number;
   branch: string;
   address: string;
+  imgUrl?: string;
 };
