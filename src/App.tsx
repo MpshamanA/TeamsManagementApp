@@ -27,6 +27,10 @@ export const sideManuContext = createContext(
 );
 const App: React.FC<RouteComponentProps> = (props) => {
   const [toggle, setToggle] = useState<boolean>(true);
+  const hundleSidemanuChange = (): void => {
+    setToggle(!toggle);
+    console.log(toggle);
+  };
   //支店
   const branchs: Branch[] = [
     {
@@ -74,9 +78,11 @@ const App: React.FC<RouteComponentProps> = (props) => {
         </sideManuContext.Provider>
       </div>
       <div className={style.header}>
-        <sideManuContext.Provider value={{ toggle, setToggle }}>
-          <Header history={props.history} />
-        </sideManuContext.Provider>
+        <Header
+          history={props.history}
+          hundleSidemanuChange={hundleSidemanuChange}
+          isToggle={toggle}
+        />
       </div>
       <div className={style.mainTeams}>
         <Grid sx={{ display: "flex" }}>

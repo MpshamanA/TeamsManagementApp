@@ -1,10 +1,9 @@
-import style from "../css/common.module.scss";
-
-import React from "react";
+import React, { useState } from "react";
 
 import { useForm } from "react-hook-form";
 
 import { RouteComponentProps } from "react-router-dom";
+import style from "../css/common.module.scss";
 
 import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
@@ -21,6 +20,7 @@ import { Copyright } from "../components/Copyright";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { User } from "../Type";
+import { sideManuContext } from "../App";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -29,6 +29,10 @@ import { auth } from "../firebase";
 const theme = createTheme();
 
 const EditProfile: React.FC<RouteComponentProps> = (props) => {
+  const [toggle, setToggle] = useState<boolean>(true);
+  const hundleSidemanuChange = () => {
+    setToggle(!toggle);
+  };
   const {
     handleSubmit,
     register,
@@ -65,10 +69,16 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
   return (
     <div className={style.grid}>
       <div className={style.side}>
-        <Side />
+        <sideManuContext.Provider value={{ toggle, setToggle }}>
+          <Side />
+        </sideManuContext.Provider>
       </div>
       <div className={style.header}>
-        <Header history={props.history} />
+        <Header
+          history={props.history}
+          hundleSidemanuChange={hundleSidemanuChange}
+          isToggle={toggle}
+        />
       </div>
       <div className={style.mainItemList}>
         <ThemeProvider theme={theme}>

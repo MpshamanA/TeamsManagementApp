@@ -1,7 +1,7 @@
+import React, { useState, useEffect } from "react";
+
 import "../css/AvailableStores.css";
 import style from "../css/common.module.scss";
-
-import React, { useState, useEffect } from "react";
 
 import { RouteComponentProps } from "react-router-dom";
 
@@ -9,8 +9,9 @@ import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { ItemList } from "../components/ItemList";
 import { ItemInput } from "../components/ItemInput";
-import { db } from "../firebase";
 import { auth } from "../firebase";
+import { db } from "../firebase";
+import { sideManuContext } from "../App";
 
 import {
   collection,
@@ -23,6 +24,11 @@ import {
 import { onAuthStateChanged } from "firebase/auth";
 
 const AvailableStores: React.FC<RouteComponentProps> = (props) => {
+  const [toggle, setToggle] = useState<boolean>(true);
+  const hundleSidemanuChange = () => {
+    setToggle(!toggle);
+  };
+
   const [stores, setStores] = useState(Array());
   //ログインしてるユーザーネーム
   const [userName, setUserName] = useState("");
@@ -106,12 +112,18 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   };
 
   return (
-    <div className={style.grid}>
+    <div className={toggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
-        <Side />
+        <sideManuContext.Provider value={{ toggle, setToggle }}>
+          <Side />
+        </sideManuContext.Provider>
       </div>
       <div className={style.header}>
-        <Header history={props.history} />
+        <Header
+          history={props.history}
+          hundleSidemanuChange={hundleSidemanuChange}
+          isToggle={toggle}
+        />
       </div>
       <div className={style.mainItemList}>
         <ItemInput

@@ -21,14 +21,22 @@ import { sideManuContext } from "../App";
 
 type PropType = {
   history: H.History;
+} & {
+  hundleSidemanuChange: () => void;
+  isToggle: boolean;
 };
 
-export const Header: React.FC<PropType> = ({ history }) => {
+export const Header: React.FC<PropType> = ({
+  history,
+  hundleSidemanuChange,
+  isToggle,
+}) => {
   //サイドメニューの切り替え
-  const { toggle, setToggle } = useContext(sideManuContext);
-  const hundleSidemanuChange = () => {
-    setToggle(!toggle);
-  };
+  // const { toggle, setToggle } = useContext(sideManuContext);
+  // const hundleSidemanuChange = () => {
+  //   setToggle(!toggle);
+  // };
+
   const [user, setUser] = useState(Object);
   // ユーザー情報を保持する
   useEffect(() => {
@@ -57,7 +65,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
             edge="start"
             aria-label="menu"
             sx={{ mr: 2, color: "#000" }}
-            onClick={hundleSidemanuChange}
+            onClick={() => hundleSidemanuChange()}
           >
             <MenuIcon />
           </IconButton>

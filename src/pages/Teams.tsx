@@ -7,6 +7,7 @@ import { RouteComponentProps, NavLink } from "react-router-dom";
 import { CardItem } from "../components/CardItem";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
+import { sideManuContext } from "../App";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
@@ -14,6 +15,10 @@ import { db } from "../firebase";
 const Teams: React.FC<RouteComponentProps> = (prop) => {
   const [users, setUsers] = useState(Array());
   const usersCollectionRef = collection(db, "Users");
+  const [toggle, setToggle] = useState<boolean>(true);
+  const hundleSidemanuChange = () => {
+    setToggle(!toggle);
+  };
 
   //登録されてるユーザーを取得
   useEffect(() => {
@@ -31,12 +36,18 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
   }, []);
 
   return (
-    <div className={style.grid}>
+    <div className={toggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
-        <Side />
+        <sideManuContext.Provider value={{ toggle, setToggle }}>
+          <Side />
+        </sideManuContext.Provider>
       </div>
       <div className={style.header}>
-        <Header history={prop.history} />
+        <Header
+          history={prop.history}
+          hundleSidemanuChange={hundleSidemanuChange}
+          isToggle={toggle}
+        />
       </div>
       <div className={style.mainTeams}>
         {users.map((user) => (
