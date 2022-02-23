@@ -1,28 +1,30 @@
 import style from "../css/common.module.scss";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import { RouteComponentProps, NavLink } from "react-router-dom";
 
 import { CardItem } from "../components/CardItem";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
-import { sideManuContext } from "../App";
+import { useSideToggle, manuContext } from "../Store";
+
+import { collectionName } from "../config/collections";
 
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
 
 const Teams: React.FC<RouteComponentProps> = (prop) => {
   const [users, setUsers] = useState(Array());
-  const usersCollectionRef = collection(db, "Users");
-  const [toggle, setToggle] = useState<boolean>(true);
-  const hundleSidemanuChange = () => {
-    setToggle(!toggle);
-  };
+  const usersCollectionRef = collection(db, collectionName.USERS);
+
+  //stateを参照
+  const state = useContext(manuContext);
 
   //登録されてるユーザーを取得
   useEffect(() => {
     let unmounted: boolean = false;
+
     const GetUsers = async () => {
       const data = await getDocs(usersCollectionRef);
       setUsers(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })));
@@ -33,21 +35,15 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
     return () => {
       unmounted = true;
     };
-  }, []);
+  }, [state]);
 
   return (
-    <div className={toggle ? style.grid : style.gridSideMin}>
+    <div className={!state.sideToggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
-        <sideManuContext.Provider value={{ toggle, setToggle }}>
-          <Side />
-        </sideManuContext.Provider>
+        <Side />
       </div>
       <div className={style.header}>
-        <Header
-          history={prop.history}
-          hundleSidemanuChange={hundleSidemanuChange}
-          isToggle={toggle}
-        />
+        <Header history={prop.history} />
       </div>
       <div className={style.mainTeams}>
         {users.map((user) => (

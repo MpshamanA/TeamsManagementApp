@@ -32,3 +32,7 @@ nav li:hover {
   background-color: rgba(108, 228, 218, 0.1);
   border-radius: 13px;
 }
+
+.border-top1 {
+  border-top: solid 1px #eee;
+}

@@ -7,7 +7,8 @@ import { CardProfile } from "../components/CardProfile";
 import { Header } from "../components/Header";
 import { ProgrammingLanguages } from "../Type";
 import { Side } from "../components/Side";
-import { sideManuContext } from "../App";
+
+import { collectionName } from "../config/collections";
 
 import { db } from "../firebase";
 import {
@@ -43,10 +44,10 @@ const Team: React.FC<PageProps> = (prop) => {
   const [programmingLanguages, setProgrammingLanguages] = useState<
     ProgrammingLanguages[]
   >([]);
-  const usersCollectionRef = collection(db, "Users");
+  const usersCollectionRef = collection(db, collectionName.USERS);
   const ProgrammingLanguagesCollectionRef = collection(
     db,
-    "ProgrammingLanguages"
+    collectionName.PROGRAMMING_LANGUAGES
   );
 
   useEffect(() => {
@@ -105,16 +106,10 @@ const Team: React.FC<PageProps> = (prop) => {
   return (
     <div className={toggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
-        <sideManuContext.Provider value={{ toggle, setToggle }}>
-          <Side />
-        </sideManuContext.Provider>
+        <Side />
       </div>
       <div className={style.header}>
-        <Header
-          history={prop.history}
-          hundleSidemanuChange={hundleSidemanuChange}
-          isToggle={toggle}
-        />
+        <Header history={prop.history} />
       </div>
       <div className={style.mainTeams}>
         <Grid container justifyContent="center" sx={{ mt: "20px" }}>

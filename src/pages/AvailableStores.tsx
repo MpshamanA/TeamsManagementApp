@@ -11,7 +11,8 @@ import { ItemList } from "../components/ItemList";
 import { ItemInput } from "../components/ItemInput";
 import { auth } from "../firebase";
 import { db } from "../firebase";
-import { sideManuContext } from "../App";
+
+import { collectionName } from "../config/collections";
 
 import {
   collection,
@@ -34,8 +35,8 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   const [userName, setUserName] = useState("");
   //inputタグに入力されたデータ
   const [inputStore, setInputStore] = useState("");
-  const storesCollectionRef = collection(db, "Stores");
-  const usersCollectionRef = collection(db, "Users");
+  const storesCollectionRef = collection(db, collectionName.STORES);
+  const usersCollectionRef = collection(db, collectionName.USERS);
 
   // const uid = auth.currentUser?.uid;
 
@@ -107,23 +108,17 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   };
   //firebaseのデータを削除
   const handleDelete = async (id: any) => {
-    const storeDoc = doc(db, "Stores", id);
+    const storeDoc = doc(db, collectionName.STORES, id);
     await deleteDoc(storeDoc);
   };
 
   return (
     <div className={toggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
-        <sideManuContext.Provider value={{ toggle, setToggle }}>
-          <Side />
-        </sideManuContext.Provider>
+        <Side />
       </div>
       <div className={style.header}>
-        <Header
-          history={props.history}
-          hundleSidemanuChange={hundleSidemanuChange}
-          isToggle={toggle}
-        />
+        <Header history={props.history} />
       </div>
       <div className={style.mainItemList}>
         <ItemInput

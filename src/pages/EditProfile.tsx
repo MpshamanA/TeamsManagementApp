@@ -20,7 +20,6 @@ import { Copyright } from "../components/Copyright";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { User } from "../Type";
-import { sideManuContext } from "../App";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -69,16 +68,10 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
   return (
     <div className={style.grid}>
       <div className={style.side}>
-        <sideManuContext.Provider value={{ toggle, setToggle }}>
-          <Side />
-        </sideManuContext.Provider>
+        <Side />
       </div>
       <div className={style.header}>
-        <Header
-          history={props.history}
-          hundleSidemanuChange={hundleSidemanuChange}
-          isToggle={toggle}
-        />
+        <Header history={props.history} />
       </div>
       <div className={style.mainItemList}>
         <ThemeProvider theme={theme}>

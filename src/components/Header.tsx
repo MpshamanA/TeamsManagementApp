@@ -12,31 +12,21 @@ import Typography from "@mui/material/Typography";
 
 import { onAuthStateChanged } from "firebase/auth";
 import { signOut } from "firebase/auth";
+import { manuContext } from "../Store";
 
 import { auth } from "../firebase";
 
 import * as H from "history";
 
-import { sideManuContext } from "../App";
-
 type PropType = {
   history: H.History;
-} & {
-  hundleSidemanuChange: () => void;
-  isToggle: boolean;
 };
 
-export const Header: React.FC<PropType> = ({
-  history,
-  hundleSidemanuChange,
-  isToggle,
-}) => {
-  //サイドメニューの切り替え
-  // const { toggle, setToggle } = useContext(sideManuContext);
-  // const hundleSidemanuChange = () => {
-  //   setToggle(!toggle);
-  // };
-
+export const Header: React.FC<PropType> = ({ history }) => {
+  const ctx = useContext(manuContext);
+  const handleClick = () => {
+    ctx.setIsSideToggle(!ctx.sideToggle); // Context値更新
+  };
   const [user, setUser] = useState(Object);
   // ユーザー情報を保持する
   useEffect(() => {
@@ -65,7 +55,7 @@ export const Header: React.FC<PropType> = ({
             edge="start"
             aria-label="menu"
             sx={{ mr: 2, color: "#000" }}
-            onClick={() => hundleSidemanuChange()}
+            onClick={handleClick}
           >
             <MenuIcon />
           </IconButton>
