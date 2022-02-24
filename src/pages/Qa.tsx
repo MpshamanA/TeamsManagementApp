@@ -1,17 +1,25 @@
-import React from "preact/compat";
-import { Side } from "../components/Side";
+import React, { useState, useContext } from "react";
+import style from "../css/common.module.scss";
+import "../css/referral.css";
 
-const Qa = () => {
+import { RouteComponentProps } from "react-router-dom";
+
+import { Header } from "../components/Header";
+import { Side } from "../components/Side";
+import { manuContext } from "../Store";
+
+const Qa: React.FC<RouteComponentProps> = (prop) => {
+  const state = useContext(manuContext);
   return (
     <div>
-      <div className="content-body flex flex-vertical flex-1 flex-row">
-        <Side />
-        <h1>よくある質問</h1>
-        <ul>
-          <li>test</li>
-          <p>こうゆうことありますか</p>
-          <p>はいあります</p>
-        </ul>
+      <div className={!state.sideToggle ? style.grid : style.gridSideMin}>
+        <div className={style.side}>
+          <Side />
+        </div>
+        <div className={style.header}>
+          <Header history={prop.history} />
+        </div>
+        <div className={style.mainItemList}>よくある質問</div>
       </div>
     </div>
   );

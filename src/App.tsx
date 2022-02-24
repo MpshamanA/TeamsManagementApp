@@ -13,7 +13,7 @@ import { Header } from "./components/Header";
 import icon from "./images/icon.png";
 import { Side } from "./components/Side";
 import { branchs } from "./config/branchs";
-import { useSideToggle, manuContext } from "./Store";
+import { manuContext } from "./Store";
 
 import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
@@ -21,7 +21,6 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const App: React.FC<RouteComponentProps> = (props) => {
-  const ctx = useSideToggle();
   const state = useContext(manuContext);
 
   //ユーザー判定 ユーザー情報を保持していない場合新規登録画面へ
@@ -81,7 +80,6 @@ const App: React.FC<RouteComponentProps> = (props) => {
               container
               rowSpacing={3}
               columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-              // justifyContent="center"
             >
               {branchs.map((branch) => (
                 <Grid item xs={6} key={branch.id}>

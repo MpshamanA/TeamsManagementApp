@@ -4,6 +4,8 @@ import "../css/side.css";
 import { NavLink } from "react-router-dom";
 
 import AutoAwesomeMotionOutlinedIcon from "@mui/icons-material/AutoAwesomeMotionOutlined";
+import ArrowDropDownOutlinedIcon from "@mui/icons-material/ArrowDropDownOutlined";
+import ArrowDropUpOutlinedIcon from "@mui/icons-material/ArrowDropUpOutlined";
 import Box from "@mui/material/Box";
 import DinnerDiningOutlinedIcon from "@mui/icons-material/DinnerDiningOutlined";
 import FaceOutlinedIcon from "@mui/icons-material/FaceOutlined";
@@ -109,6 +111,11 @@ export const Side = () => {
                           fontSize: 14,
                         }}
                       />
+                      {!benefitsState.openBenefits ? (
+                        <ArrowDropDownOutlinedIcon />
+                      ) : (
+                        <ArrowDropUpOutlinedIcon />
+                      )}
                     </ListItemButton>
                   </li>
                 </Box>
@@ -291,24 +298,7 @@ export const Side = () => {
                   </Box>
                 </div>
               )}
-              <Box sx={{ mt: 1, mb: 1 }}>
-                <NavLink
-                  exact
-                  to={"/availableStores"}
-                  className="link-bar-none"
-                  activeStyle={current}
-                >
-                  <li className="side-menu">
-                    <ListItemButton
-                      sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
-                    >
-                      <ListItemIcon>
-                        <DinnerDiningOutlinedIcon />
-                      </ListItemIcon>
-                    </ListItemButton>
-                  </li>
-                </NavLink>
-              </Box>
+
               <Box sx={{ mt: 1, mb: 1 }}>
                 <NavLink
                   exact

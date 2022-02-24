@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -20,6 +20,7 @@ import { Copyright } from "../components/Copyright";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { User } from "../Type";
+import { manuContext } from "../Store";
 
 import { collection, setDoc, doc } from "firebase/firestore";
 import { db } from "../firebase";
@@ -28,10 +29,8 @@ import { auth } from "../firebase";
 const theme = createTheme();
 
 const EditProfile: React.FC<RouteComponentProps> = (props) => {
-  const [toggle, setToggle] = useState<boolean>(true);
-  const hundleSidemanuChange = () => {
-    setToggle(!toggle);
-  };
+  const state = useContext(manuContext);
+
   const {
     handleSubmit,
     register,
@@ -66,7 +65,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
     props.history.push(`/teams/${uid}`);
   };
   return (
-    <div className={style.grid}>
+    <div className={!state.sideToggle ? style.grid : style.gridSideMin}>
       <div className={style.side}>
         <Side />
       </div>
