@@ -24,13 +24,13 @@ export const ItemInput: React.FC<Props> = ({
     //mapで回す場合keyは必須
     <div className="inner">
       <div className="input-form">
-        <p>実際に使用できたお店を入力する</p>
         <div className="inner">
           <input
             type="text"
             className="input"
             value={inputStore}
             onChange={hundleInputChange}
+            placeholder="店舗名を記載してください"
           />
           <Button
             variant="contained"

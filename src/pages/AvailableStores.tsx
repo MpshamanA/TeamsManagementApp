@@ -3,6 +3,11 @@ import React, { useState, useEffect, useContext } from "react";
 import "../css/AvailableStores.css";
 import style from "../css/common.module.scss";
 
+import Card from "@mui/material/Card";
+import Grid from "@mui/material/Grid";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+
 import { RouteComponentProps } from "react-router-dom";
 
 import { Header } from "../components/Header";
@@ -12,6 +17,7 @@ import { ItemInput } from "../components/ItemInput";
 import { auth } from "../firebase";
 import { db } from "../firebase";
 import { manuContext } from "../Store";
+import TicketRestarant from "../images/TicketRestarant.png";
 
 import { collectionName } from "../config/collections";
 
@@ -119,14 +125,28 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
         <Header history={props.history} />
       </div>
       <div className={style.mainItemList}>
-        <ItemInput
-          stores={stores}
-          inputStore={inputStore}
-          handleSubmit={handleSubmit}
-          hundleInputChange={hundleInputChange}
-        />
-        <h1 className="pl-10">使用できた店舗一覧</h1>
-        <ItemList stores={stores} handleDelete={handleDelete} />
+        <Card sx={{ width: "200px", mt: 1, ml: 1 }}>
+          <img
+            src={TicketRestarant}
+            alt="チケットレストラン"
+            className="TicketRestarant-img"
+          />
+        </Card>
+
+        <Card sx={{ mt: 2, ml: 2, mr: 2 }}>
+          <Grid display="flex" flexWrap="wrap" sx={{ mt: 3, flexWrap: "wrap" }}>
+            <h1 className="pl-10">使用できた店舗一覧</h1>
+            <Box sx={{ ml: 3 }}>
+              <ItemInput
+                stores={stores}
+                inputStore={inputStore}
+                handleSubmit={handleSubmit}
+                hundleInputChange={hundleInputChange}
+              />
+            </Box>
+          </Grid>
+          <ItemList stores={stores} handleDelete={handleDelete} />
+        </Card>
       </div>
     </div>
   );

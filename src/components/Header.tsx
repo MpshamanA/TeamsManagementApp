@@ -25,7 +25,7 @@ type PropType = {
 export const Header: React.FC<PropType> = ({ history }) => {
   const ctx = useContext(manuContext);
   const handleClick = () => {
-    ctx.setIsSideToggle(!ctx.sideToggle); // Context値更新
+    ctx.setIsSideToggle(!ctx.sideToggle); // ハンバーガーiconをクリックすることでtoggleの反転させサイドバーを変化させる
   };
   const [user, setUser] = useState(Object);
   // ユーザー情報を保持する

@@ -1,7 +1,8 @@
-.min-calc {
-  width: calc(100% - 220px); /*サイドバー分マイナス*/
+.pl-10 {
+  padding-left: 40px;
+  margin: 0;
 }
 
-.pl-10 {
-  padding-left: 10px;
+.TicketRestarant-img {
+  width: 200px;
 }

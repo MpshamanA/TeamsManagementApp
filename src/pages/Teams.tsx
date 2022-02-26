@@ -7,7 +7,7 @@ import { RouteComponentProps, NavLink } from "react-router-dom";
 import { CardItem } from "../components/CardItem";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
-import { useSideToggle, manuContext } from "../Store";
+import { manuContext } from "../Store";
 
 import { collectionName } from "../config/collections";
 
