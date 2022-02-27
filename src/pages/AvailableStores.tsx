@@ -125,7 +125,7 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
         <Header history={props.history} />
       </div>
       <div className={style.mainItemList}>
-        <Card sx={{ width: "200px", mt: 1, ml: 1 }}>
+        <Card sx={{ width: "200px", mt: 2, ml: 2 }}>
           <img
             src={TicketRestarant}
             alt="チケットレストラン"

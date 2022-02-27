@@ -22,7 +22,11 @@
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(24, 211, 133, 0.075);
+    background: linear-gradient(
+      225deg,
+      rgba(4, 252, 219, 0.3),
+      rgba(0, 255, 157, 0.3)
+    );
     min-height: 100vh;
     border-radius: 20px;
   }
@@ -34,7 +38,11 @@
     margin: 10px;
     min-height: 100vh;
     border-radius: 20px;
-    background-color: rgba(24, 211, 133, 0.075);
+    background: linear-gradient(
+      225deg,
+      rgba(4, 252, 219, 0.3),
+      rgba(0, 255, 157, 0.3)
+    );
   }
 }
 .gridSideMin {
@@ -61,7 +69,11 @@
     padding: 20px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgba(24, 211, 133, 0.075);
+    background: linear-gradient(
+      225deg,
+      rgba(4, 252, 219, 0.3),
+      rgba(0, 255, 157, 0.3)
+    );
     min-height: 100vh;
     border-radius: 20px;
   }
@@ -73,6 +85,10 @@
     margin: 10px;
     min-height: 100vh;
     border-radius: 20px;
-    background-color: rgba(24, 211, 133, 0.075);
+    background: linear-gradient(
+      225deg,
+      rgba(4, 252, 219, 0.3),
+      rgba(0, 255, 157, 0.3)
+    );
   }
 }
