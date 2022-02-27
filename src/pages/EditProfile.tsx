@@ -31,11 +31,7 @@ const theme = createTheme();
 const EditProfile: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);
 
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm<User>();
+  const { handleSubmit, register } = useForm<User>();
 
   //プルフィールを編集する場合認証されてるユーザーのため
   const uid: any = auth.currentUser!.uid;
@@ -113,7 +109,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                     <TextField
                       required
                       fullWidth
-                      label="1番好きなフェーズ(要件定義～基本設計など)"
+                      label="得意なフェーズ"
                       id="favoritePhase"
                       {...register("favoritePhase", {
                         required: true,
@@ -124,7 +120,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                     <TextField
                       required
                       fullWidth
-                      label="キャリアプラン"
+                      label="趣味"
                       multiline
                       rows={4}
                       id="careerPlan"
