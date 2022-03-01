@@ -28,6 +28,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
     ctx.setIsSideToggle(!ctx.sideToggle); // ハンバーガーiconをクリックすることでtoggleの反転させサイドバーを変化させる
   };
   const [user, setUser] = useState(Object);
+
   // ユーザー情報を保持する
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -35,12 +36,10 @@ export const Header: React.FC<PropType> = ({ history }) => {
     });
   }, []);
 
-  //uidは下記で取れる
-
   const handoleSignOut = async () => {
     try {
       await signOut(auth);
-      history.push("signUp");
+      history.push("/signUp");
     } catch (error) {
       alert(error);
     }
