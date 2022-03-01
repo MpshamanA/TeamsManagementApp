@@ -64,8 +64,6 @@ const Team: React.FC<PageProps> = (prop) => {
           setYearsExperience(docSnap.data().yearsExperience);
           setFavoritePhase(docSnap.data().favoritePhase);
           setCareerPlan(docSnap.data().careerPlan);
-        } else {
-          setUserName("NULL");
         }
       };
       if (!unmounted) {

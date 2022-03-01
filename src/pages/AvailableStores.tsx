@@ -42,8 +42,6 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
   const storesCollectionRef = collection(db, collectionName.STORES);
   const usersCollectionRef = collection(db, collectionName.USERS);
 
-  // const uid = auth.currentUser?.uid;
-
   //storesに変更があった時にレンダリングされる
   useEffect(() => {
     //メモリリーク回避：非同期処理が完了する前にコンポーネントがアンマウントされると、ステートは更新されない

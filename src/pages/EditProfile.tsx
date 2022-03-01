@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 import { useForm } from "react-hook-form";
 
@@ -16,15 +16,17 @@ import PermIdentitySharpIcon from "@mui/icons-material/PermIdentitySharp";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
+import { collectionName } from "../config/collections";
 import { Copyright } from "../components/Copyright";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { User } from "../Type";
 import { manuContext } from "../Store";
 
-import { collection, setDoc, doc } from "firebase/firestore";
+import { collection, setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
 import { auth } from "../firebase";
+import { onAuthStateChanged } from "firebase/auth";
 
 const theme = createTheme();
 
@@ -33,14 +35,40 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
 
   const { handleSubmit, register } = useForm<User>();
 
-  //プルフィールを編集する場合認証されてるユーザーのため
-  const uid: any = auth.currentUser!.uid;
   //ユーザー情報を登録するコレクションを設定
-  const usersCollectionRef = collection(db, "Users");
+  const usersCollectionRef = collection(db, collectionName.USERS);
+
+  //編集する項目
+  const [yearsExperience, setYearsExperience] = useState<string>("");
+  const [favoritePhase, setFavoritePhase] = useState<string>("");
+  const [hobby, setHobby] = useState<string>("");
+
+  //プルフィールを編集する場合認証されてるユーザーのためNULLを否定
+  const uid: any = auth.currentUser!.uid;
+  //uidはStoreで管理するように修正が必要↓
+  useEffect(() => {
+    onAuthStateChanged(auth, (resUser) => {
+      if (resUser) {
+        const getUserName = async () => {
+          const docRef = doc(usersCollectionRef, resUser!.uid);
+          const docSnap = await getDoc(docRef);
+          //データが存在しない場合、スナップショットから返されるのは、exists() を呼び出した場合は false
+          if (docSnap.exists()) {
+            setYearsExperience(docSnap.data().yearsExperience);
+            setFavoritePhase(docSnap.data().favoritePhase);
+            setHobby(docSnap.data().hobby);
+          } else {
+            // setUserName("NULL");
+          }
+        };
+        getUserName();
+      }
+    });
+  }, []);
 
   //required: trueにすることによってデータを取得する
   const handleEditProfile = async (data: User) => {
-    const { yearsExperience, favoritePhase, careerPlan } = data;
+    const { yearsExperience, favoritePhase, hobby } = data;
 
     try {
       //認証情報とstore情報をuidで紐付け
@@ -50,7 +78,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
         {
           yearsExperience: yearsExperience,
           favoritePhase: favoritePhase,
-          careerPlan: careerPlan,
+          hobby: hobby,
         },
         { merge: true }
       );
@@ -99,6 +127,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                       fullWidth
                       id="yearsExperience"
                       label="経験年数"
+                      defaultValue={yearsExperience}
                       autoComplete="yearsExperience"
                       {...register("yearsExperience", {
                         required: true,
@@ -123,8 +152,8 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
                       label="趣味"
                       multiline
                       rows={4}
-                      id="careerPlan"
-                      {...register("careerPlan", {
+                      id="hobby"
+                      {...register("hobby", {
                         required: true,
                       })}
                     />

@@ -14,7 +14,7 @@ export type User = {
   password: string;
   yearsExperience?: string;
   favoritePhase?: string;
-  careerPlan?: string;
+  hobby?: string;
 };
 
 //一旦全部NULL許容
