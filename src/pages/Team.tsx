@@ -38,7 +38,7 @@ const Team: React.FC<PageProps> = (prop) => {
   const [userPositon, setUserPositon] = useState("");
   const [yearsExperience, setYearsExperience] = useState("");
   const [favoritePhase, setFavoritePhase] = useState("");
-  const [careerPlan, setCareerPlan] = useState("");
+  const [hobby, setHobby] = useState("");
   const [programmingLanguages, setProgrammingLanguages] = useState<
     ProgrammingLanguages[]
   >([]);
@@ -63,7 +63,7 @@ const Team: React.FC<PageProps> = (prop) => {
           setUserPositon(docSnap.data().position);
           setYearsExperience(docSnap.data().yearsExperience);
           setFavoritePhase(docSnap.data().favoritePhase);
-          setCareerPlan(docSnap.data().careerPlan);
+          setHobby(docSnap.data().hobby);
         }
       };
       if (!unmounted) {
@@ -113,7 +113,7 @@ const Team: React.FC<PageProps> = (prop) => {
             userName={userName}
             userPositon={userPositon}
             yearsExperience={yearsExperience}
-            careerPlan={careerPlan}
+            hobby={hobby}
             favoritePhase={favoritePhase}
             programmingLanguages={programmingLanguages}
           />

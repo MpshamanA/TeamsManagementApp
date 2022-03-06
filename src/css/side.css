@@ -33,6 +33,7 @@ nav li:hover {
   border-radius: 13px;
 }
 
-.border-top1 {
+.border {
   border-top: solid 1px #eee;
+  border-bottom: solid 1px #eee;
 }

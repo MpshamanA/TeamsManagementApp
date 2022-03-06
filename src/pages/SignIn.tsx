@@ -15,10 +15,14 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
 
-import { auth } from "../firebase";
 import { User } from "../Type";
 
-import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  onAuthStateChanged,
+  Auth,
+  getAuth,
+} from "firebase/auth";
 
 function Copyright(props: any) {
   return (
@@ -44,6 +48,7 @@ const SignIn: React.FC<RouteComponentProps> = (props) => {
     formState: { errors },
   } = useForm<User>();
 
+  const auth: Auth = getAuth();
   //ログイン処理
   const handleSignIn = async (data: User) => {
     const { email, password } = data;

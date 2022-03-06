@@ -21,12 +21,11 @@ import { Copyright } from "../components/Copyright";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { User } from "../Type";
-import { manuContext } from "../Store";
+import { manuContext, authContext, AuthDataStoreContext } from "../Store";
 
 import { collection, setDoc, doc, getDoc } from "firebase/firestore";
 import { db } from "../firebase";
-import { auth } from "../firebase";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, Auth, getAuth } from "firebase/auth";
 
 const theme = createTheme();
 
@@ -44,25 +43,25 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
   const [hobby, setHobby] = useState<string>("");
 
   //プルフィールを編集する場合認証されてるユーザーのためNULLを否定
-  const uid: any = auth.currentUser!.uid;
+  const auth: Auth = getAuth();
+  // const uid: string = auth.currentUser!.uid;
+  const authData = useContext(authContext);
+
   //uidはStoreで管理するように修正が必要↓
   useEffect(() => {
-    onAuthStateChanged(auth, (resUser) => {
-      if (resUser) {
-        const getUserName = async () => {
-          const docRef = doc(usersCollectionRef, resUser!.uid);
-          const docSnap = await getDoc(docRef);
-          //データが存在しない場合、スナップショットから返されるのは、exists() を呼び出した場合は false
-          if (docSnap.exists()) {
-            setYearsExperience(docSnap.data().yearsExperience);
-            setFavoritePhase(docSnap.data().favoritePhase);
-            setHobby(docSnap.data().hobby);
-          } else {
-            // setUserName("NULL");
-          }
-        };
+    onAuthStateChanged(auth, (currentUser) => {
+      authData.setIsAuthData(currentUser);
+      const getUserName = async () => {
+        const docRef = doc(usersCollectionRef, authData.authData?.uid);
+        const docSnap = await getDoc(docRef);
+        //データが存在しない場合、スナップショットから返されるのは、exists() を呼び出した場合は false
+        if (docSnap.exists()) {
+          setYearsExperience(docSnap.data().yearsExperience);
+          setFavoritePhase(docSnap.data().favoritePhase);
+          setHobby(docSnap.data().hobby);
+        }
         getUserName();
-      }
+      };
     });
   }, []);
 
@@ -72,7 +71,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
 
     try {
       //認証情報とstore情報をuidで紐付け
-      const cityRef = doc(usersCollectionRef, uid);
+      const cityRef = doc(usersCollectionRef, authData.authData?.uid);
       await setDoc(
         cityRef,
         {
@@ -86,7 +85,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
       alert(error);
       return;
     }
-    props.history.push(`/teams/${uid}`);
+    props.history.push(`/teams/${authData.authData?.uid}`);
   };
   return (
     <div className={!state.sideToggle ? style.grid : style.gridSideMin}>
@@ -122,17 +121,30 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
               >
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
-                    <TextField
-                      required
-                      fullWidth
-                      id="yearsExperience"
-                      label="経験年数"
-                      defaultValue={yearsExperience}
-                      autoComplete="yearsExperience"
-                      {...register("yearsExperience", {
-                        required: true,
-                      })}
-                    />
+                    {yearsExperience === "" ? (
+                      <TextField
+                        required
+                        fullWidth
+                        id="yearsExperience"
+                        label="経験年数"
+                        autoComplete="yearsExperience"
+                        {...register("yearsExperience", {
+                          required: true,
+                        })}
+                      />
+                    ) : (
+                      <TextField
+                        required
+                        fullWidth
+                        id="yearsExperience"
+                        label="経験年数"
+                        defaultValue={yearsExperience}
+                        autoComplete="yearsExperience"
+                        {...register("yearsExperience", {
+                          required: true,
+                        })}
+                      />
+                    )}
                   </Grid>
                   <Grid item xs={12}>
                     <TextField

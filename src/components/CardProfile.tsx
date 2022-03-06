@@ -26,7 +26,7 @@ type Props = {
   userPositon: string;
   yearsExperience: string;
   favoritePhase: string;
-  careerPlan: string;
+  hobby: string;
   programmingLanguages: ProgrammingLanguages[];
 };
 
@@ -34,7 +34,7 @@ export const CardProfile: React.FC<Props> = ({
   userName,
   userPositon,
   yearsExperience,
-  careerPlan,
+  hobby,
   favoritePhase,
   programmingLanguages,
 }) => {
@@ -185,7 +185,7 @@ export const CardProfile: React.FC<Props> = ({
                   component="div"
                   sx={{ m: 0 }}
                 >
-                  得意なフェーズ
+                  一番得意なフェーズ
                 </Typography>
                 <Typography variant="h5" component="div">
                   {favoritePhase}
@@ -209,7 +209,7 @@ export const CardProfile: React.FC<Props> = ({
                   component="div"
                   sx={{ m: 0 }}
                 >
-                  好きな言語
+                  一番好きな言語
                 </Typography>
                 {programmingLanguages.length > 0 ? (
                   programmingLanguages.map((e: ProgrammingLanguages) => (
@@ -224,11 +224,7 @@ export const CardProfile: React.FC<Props> = ({
                     />
                   ))
                 ) : (
-                  <Typography
-                    variant="h5"
-                    component="div"
-                    color="text.secondary"
-                  >
+                  <Typography variant="h5" component="div">
                     NoData
                   </Typography>
                 )}
@@ -240,7 +236,7 @@ export const CardProfile: React.FC<Props> = ({
               趣味
             </Typography>
             <Typography variant="body1" color="text.secondary">
-              {careerPlan}
+              {hobby}
             </Typography>
           </Box>
         </CardContent>

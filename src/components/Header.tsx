@@ -10,11 +10,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, Auth, getAuth } from "firebase/auth";
 import { signOut } from "firebase/auth";
-import { manuContext } from "../Store";
-
-import { auth } from "../firebase";
+import { manuContext, authContext } from "../Store";
 
 import * as H from "history";
 
@@ -27,12 +25,14 @@ export const Header: React.FC<PropType> = ({ history }) => {
   const handleClick = () => {
     ctx.setIsSideToggle(!ctx.sideToggle); // ハンバーガーiconをクリックすることでtoggleの反転させサイドバーを変化させる
   };
-  const [user, setUser] = useState(Object);
 
-  // ユーザー情報を保持する
+  const authDataContext = useContext(authContext);
+  const auth: Auth = getAuth();
+
+  //ユーザー情報を保持する;
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      setUser(user);
+      authDataContext.setIsAuthData(user);
     });
   }, []);
 
@@ -63,9 +63,16 @@ export const Header: React.FC<PropType> = ({ history }) => {
             component="div"
             sx={{ flexGrow: 1 }}
           ></Typography>
-          <Typography component="h1" variant="h5" pr={3} sx={{ color: "#000" }}>
-            {user.email}
-          </Typography>
+          {authDataContext.authData && (
+            <Typography
+              component="h1"
+              variant="h5"
+              pr={3}
+              sx={{ color: "#000" }}
+            >
+              {authDataContext.authData?.email}
+            </Typography>
+          )}
           <NavLink exact to={"/editProfile"} className="link-bar-none">
             <Button
               variant="contained"

@@ -6,8 +6,7 @@ import { useLayoutEffect } from "react";
 
 import { RouteComponentProps } from "react-router-dom";
 
-import { onAuthStateChanged } from "firebase/auth";
-import { auth } from "./firebase";
+import { onAuthStateChanged, Auth, getAuth } from "firebase/auth";
 
 import { Header } from "./components/Header";
 import icon from "./images/icon.png";
@@ -21,6 +20,7 @@ import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
 
 const App: React.FC<RouteComponentProps> = (props) => {
+  const auth: Auth = getAuth();
   const state = useContext(manuContext);
 
   //ユーザー判定 ユーザー情報を保持していない場合新規登録画面へ

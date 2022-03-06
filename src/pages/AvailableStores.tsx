@@ -14,7 +14,6 @@ import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { ItemList } from "../components/ItemList";
 import { ItemInput } from "../components/ItemInput";
-import { auth } from "../firebase";
 import { db } from "../firebase";
 import { manuContext } from "../Store";
 import TicketRestarant from "../images/TicketRestarant.png";
@@ -29,9 +28,10 @@ import {
   doc,
   deleteDoc,
 } from "firebase/firestore";
-import { onAuthStateChanged } from "firebase/auth";
+import { onAuthStateChanged, Auth, getAuth } from "firebase/auth";
 
 const AvailableStores: React.FC<RouteComponentProps> = (props) => {
+  const auth: Auth = getAuth();
   const state = useContext(manuContext);
 
   const [stores, setStores] = useState(Array());

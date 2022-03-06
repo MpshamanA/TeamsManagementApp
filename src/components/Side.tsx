@@ -121,7 +121,7 @@ export const Side = () => {
                 </Box>
               </Box>
               {benefitsState.openBenefits && (
-                <div className="border-top1">
+                <div className="border">
                   <Box sx={{ mt: 1, mb: 1, ml: 2 }}>
                     <NavLink
                       exact

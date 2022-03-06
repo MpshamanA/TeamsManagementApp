@@ -12,27 +12,37 @@ import SignUp from "./pages/SignUp";
 import { Route, BrowserRouter } from "react-router-dom";
 import SignIn from "./pages/SignIn";
 import EditProfile from "./pages/EditProfile";
-import { SideContext, BenefitsContext } from "./Store";
+import {
+  ManuStoreContext,
+  BenefitsStoreContext,
+  AuthDataStoreContext,
+} from "./Store";
 
 //routeの設定
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <BenefitsContext>
-        <SideContext>
-          <div>
-            <Route exact path="/" component={App} />
-            <Route exact path="/teams" component={Teams} />
-            <Route exact path="/teams/:id" component={Team} />
-            <Route exact path="/referral" component={Referral} />
-            <Route exact path="/availableStores" component={AvailableStores} />
-            <Route exact path="/qa" component={Qa} />
-            <Route exact path="/signUp" component={SignUp} />
-            <Route exact path="/signIn" component={SignIn} />
-            <Route exact path="/editProfile" component={EditProfile} />
-          </div>
-        </SideContext>
-      </BenefitsContext>
+      <BenefitsStoreContext>
+        <ManuStoreContext>
+          <AuthDataStoreContext>
+            <div>
+              <Route exact path="/" component={App} />
+              <Route exact path="/teams" component={Teams} />
+              <Route exact path="/teams/:id" component={Team} />
+              <Route exact path="/referral" component={Referral} />
+              <Route
+                exact
+                path="/availableStores"
+                component={AvailableStores}
+              />
+              <Route exact path="/qa" component={Qa} />
+              <Route exact path="/signUp" component={SignUp} />
+              <Route exact path="/signIn" component={SignIn} />
+              <Route exact path="/editProfile" component={EditProfile} />
+            </div>
+          </AuthDataStoreContext>
+        </ManuStoreContext>
+      </BenefitsStoreContext>
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
