@@ -149,7 +149,7 @@ export const Side = () => {
                   <Box sx={{ mt: 1, mb: 1, ml: 2 }}>
                     <NavLink
                       exact
-                      to={"/availableStores"}
+                      to={"/ticketRestarant"}
                       className="link-bar-none"
                       activeStyle={current}
                     >

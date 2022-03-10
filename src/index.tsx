@@ -1,17 +1,20 @@
 import React, { useContext } from "react";
 import ReactDOM from "react-dom";
+
 import "./index.css";
+
 import App from "./App";
-import Teams from "./pages/Teams";
+import EditProfile from "./pages/EditProfile";
 import Team from "./pages/Team";
+import Teams from "./pages/Teams";
+import TicketRestarant from "./pages/TicketRestarant";
 import Referral from "./pages/Referral";
 import AvailableStores from "./pages/AvailableStores";
 import reportWebVitals from "./reportWebVitals";
 import Qa from "./pages/Qa";
+import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import { Route, BrowserRouter } from "react-router-dom";
-import SignIn from "./pages/SignIn";
-import EditProfile from "./pages/EditProfile";
 import {
   ManuStoreContext,
   BenefitsStoreContext,
@@ -32,8 +35,8 @@ ReactDOM.render(
               <Route exact path="/referral" component={Referral} />
               <Route
                 exact
-                path="/availableStores"
-                component={AvailableStores}
+                path="/ticketRestarant"
+                component={TicketRestarant}
               />
               <Route exact path="/qa" component={Qa} />
               <Route exact path="/signUp" component={SignUp} />
