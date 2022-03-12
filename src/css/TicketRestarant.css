@@ -1,0 +1,28 @@
+.question-man-img {
+  width: 60px;
+}
+
+.pizza-img {
+  width: 100%;
+}
+.shop1-img {
+  width: 70%;
+  margin-bottom: 20px;
+}
+.shop2-img {
+  width: 70%;
+  margin-bottom: 20px;
+}
+
+.shop-list-title {
+  background-image: url(../images/TicketRestarant/salad.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right bottom;
+  background-size: cover;
+}
+
+.tokyoMap-img {
+  width: 50%;
+  margin-bottom: 30px;
+}
