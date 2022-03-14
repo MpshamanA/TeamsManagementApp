@@ -5,12 +5,13 @@ import "./index.css";
 
 import App from "./App";
 import EditProfile from "./pages/EditProfile";
+import Library from "./pages/Library";
+import Referral from "./pages/Referral";
+import reportWebVitals from "./reportWebVitals";
+import SideBusiness from "./pages/SideBusiness";
 import Team from "./pages/Team";
 import Teams from "./pages/Teams";
 import TicketRestarant from "./pages/TicketRestarant";
-import Referral from "./pages/Referral";
-import AvailableStores from "./pages/AvailableStores";
-import reportWebVitals from "./reportWebVitals";
 import Qa from "./pages/Qa";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -38,6 +39,8 @@ ReactDOM.render(
                 path="/ticketRestarant"
                 component={TicketRestarant}
               />
+              <Route exact path="/sideBusiness" component={SideBusiness} />
+              <Route exact path="/library" component={Library} />
               <Route exact path="/qa" component={Qa} />
               <Route exact path="/signUp" component={SignUp} />
               <Route exact path="/signIn" component={SignIn} />

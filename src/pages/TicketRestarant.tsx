@@ -7,6 +7,8 @@ import { RouteComponentProps } from "react-router-dom";
 
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
+import { Copyright } from "@mui/icons-material";
+
 import { manuContext } from "../Store";
 
 import QuestionManImg from "../images/TicketRestarant/Question.png";
@@ -122,9 +124,9 @@ const TicketRestarant: React.FC<RouteComponentProps> = (props) => {
               gutterBottom
               variant="h5"
               component="div"
-              sx={{ mb: 5 }}
+              sx={{ mb: 3 }}
             >
-              ↓↓↓ 詳しくはこちらから近くで使えるお店をチェック ↓↓↓
+              ↓↓↓ 近くで使えるお店を検索 ↓↓↓
             </Typography>
             <a
               href="http://search.edenred.jp/"

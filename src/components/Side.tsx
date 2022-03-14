@@ -14,7 +14,9 @@ import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import MenuBookOutlinedIcon from "@mui/icons-material/MenuBookOutlined";
 import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
+import WorkOutlineOutlinedIcon from "@mui/icons-material/WorkOutlineOutlined";
 
 import logo from "../images/logo.png";
 import icon from "../images/icon.png";
@@ -170,6 +172,54 @@ export const Side = () => {
                       </li>
                     </NavLink>
                   </Box>
+                  <Box sx={{ mt: 1, mb: 1, ml: 2 }}>
+                    <NavLink
+                      exact
+                      to={"/sideBusiness"}
+                      className="link-bar-none"
+                      activeStyle={current}
+                    >
+                      <li className="side-menu">
+                        <ListItemButton
+                          sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
+                        >
+                          <ListItemIcon>
+                            <WorkOutlineOutlinedIcon />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary="副業"
+                            primaryTypographyProps={{
+                              fontSize: 14,
+                            }}
+                          />
+                        </ListItemButton>
+                      </li>
+                    </NavLink>
+                  </Box>
+                  <Box sx={{ mt: 1, mb: 1, ml: 2 }}>
+                    <NavLink
+                      exact
+                      to={"/library"}
+                      className="link-bar-none"
+                      activeStyle={current}
+                    >
+                      <li className="side-menu">
+                        <ListItemButton
+                          sx={{ pt: 1.2, pb: 1.2, borderRadius: "13px" }}
+                        >
+                          <ListItemIcon>
+                            <MenuBookOutlinedIcon />
+                          </ListItemIcon>
+                          <ListItemText
+                            primary="図書貸し出し制度"
+                            primaryTypographyProps={{
+                              fontSize: 14,
+                            }}
+                          />
+                        </ListItemButton>
+                      </li>
+                    </NavLink>
+                  </Box>
                 </div>
               )}
 
@@ -281,7 +331,7 @@ export const Side = () => {
                   <Box sx={{ mt: 1, mb: 1 }}>
                     <NavLink
                       exact
-                      to={"/availableStores"}
+                      to={"/ticketRestarant"}
                       className="link-bar-none"
                       activeStyle={current}
                     >
@@ -291,6 +341,42 @@ export const Side = () => {
                         >
                           <ListItemIcon>
                             <DinnerDiningOutlinedIcon />
+                          </ListItemIcon>
+                        </ListItemButton>
+                      </li>
+                    </NavLink>
+                  </Box>
+                  <Box sx={{ mt: 1, mb: 1 }}>
+                    <NavLink
+                      exact
+                      to={"/sideBusiness"}
+                      className="link-bar-none"
+                      activeStyle={current}
+                    >
+                      <li className="side-menu">
+                        <ListItemButton
+                          sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
+                        >
+                          <ListItemIcon>
+                            <WorkOutlineOutlinedIcon />
+                          </ListItemIcon>
+                        </ListItemButton>
+                      </li>
+                    </NavLink>
+                  </Box>
+                  <Box sx={{ mt: 1, mb: 1 }}>
+                    <NavLink
+                      exact
+                      to={"/library"}
+                      className="link-bar-none"
+                      activeStyle={current}
+                    >
+                      <li className="side-menu">
+                        <ListItemButton
+                          sx={{ pt: 1.5, pb: 1.5, borderRadius: "13px" }}
+                        >
+                          <ListItemIcon>
+                            <MenuBookOutlinedIcon />
                           </ListItemIcon>
                         </ListItemButton>
                       </li>
