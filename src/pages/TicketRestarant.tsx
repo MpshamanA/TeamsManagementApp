@@ -33,7 +33,7 @@ const TicketRestarant: React.FC<RouteComponentProps> = (props) => {
         <div className={style.header}>
           <Header history={props.history} />
         </div>
-        <div className={style.mainTicketRestarant}>
+        <div className={style.mainBenefits}>
           <img src={PizzaImg} alt="pizza" className="pizza-img" />
           <Box sx={{ ml: 3, mt: 2, mb: 10 }}>
             <Typography

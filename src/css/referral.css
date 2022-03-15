@@ -1,3 +1,14 @@
 .refarral-img {
   width: 80%;
 }
+
+.teamwork-img {
+  width: 100%;
+}
+.refarral-title {
+  background-image: url(../images/Referral/teamwork.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: right bottom;
+  background-size: cover;
+}
