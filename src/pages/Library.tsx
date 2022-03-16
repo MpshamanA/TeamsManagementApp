@@ -18,7 +18,7 @@ const Library: React.FC<RouteComponentProps> = (props) => {
         <div className={style.header}>
           <Header history={props.history} />
         </div>
-        <div className={style.mainTicketRestarant}>図書コンテンツ</div>
+        <div className={style.mainBenefits}>図書コンテンツ</div>
       </div>
     </>
   );

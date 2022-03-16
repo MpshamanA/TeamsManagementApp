@@ -1,9 +1,14 @@
 .refarral-img {
   width: 80%;
+  margin-top: 50px;
 }
 
 .teamwork-img {
   width: 100%;
+}
+
+.meeting-img {
+  width: 300px;
 }
 .refarral-title {
   background-image: url(../images/Referral/teamwork.jpg);

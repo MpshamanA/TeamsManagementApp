@@ -45,12 +45,14 @@
     );
   }
   .mainBenefits {
-    // text-align: center;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     margin: 10px;
     min-height: 100vh;
     border-radius: 20px;
+    .referral {
+      text-align: center;
+    }
   }
 }
 .gridSideMin {
@@ -100,7 +102,6 @@
     );
   }
   .mainBenefits {
-    // text-align: center;
     grid-column: 2 / 3;
     grid-row: 2 / 3;
     margin: 10px;

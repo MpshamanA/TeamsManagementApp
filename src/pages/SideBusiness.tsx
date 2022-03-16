@@ -19,7 +19,7 @@ const SideBusiness: React.FC<RouteComponentProps> = (props) => {
         <div className={style.header}>
           <Header history={props.history} />
         </div>
-        <div className={style.mainTicketRestarant}>副業コンテンツ</div>
+        <div className={style.mainBenefits}>副業コンテンツ</div>
       </div>
     </>
   );
