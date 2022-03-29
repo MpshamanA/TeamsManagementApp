@@ -13,7 +13,6 @@ import meetingImg from "../images/Referral/meeting.png";
 
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
 
 const Referral: React.FC<RouteComponentProps> = (prop) => {
   const state = useContext(manuContext);
@@ -83,7 +82,7 @@ const Referral: React.FC<RouteComponentProps> = (prop) => {
             }}
           >
             {explanations.map((explanation) => (
-              <Box key={explanation.title} sx={{ mt: 5, textAlign: "center" }}>
+              <Box key={explanation.title} sx={{ mt: 5 }}>
                 <Typography
                   gutterBottom
                   variant="h5"

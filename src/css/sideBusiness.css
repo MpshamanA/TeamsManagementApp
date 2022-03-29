@@ -1,0 +1,14 @@
+.side-business-img {
+  width: 100%;
+  filter: sepia(50%);
+}
+
+.side-business-title {
+  position: relative;
+}
+.side-business-title-text {
+  position: absolute;
+  color: white;
+  top: 100px;
+  left: 100px;
+}

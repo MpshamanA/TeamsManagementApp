@@ -3,12 +3,16 @@ import React, { useContext } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { Header } from "../components/Header";
-import { Side } from "../components/Side";
 import { manuContext } from "../Store";
+import { Side } from "../components/Side";
+import { explanations } from "../config/SideBusiness/explanation";
+import SideBusinessImg from "../images/SideBusiness/laptop.jpg";
 
+import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 
 import style from "../css/common.module.scss";
+import "../css/sideBusiness.css";
 
 const SideBusiness: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);
@@ -22,34 +26,48 @@ const SideBusiness: React.FC<RouteComponentProps> = (props) => {
           <Header history={props.history} />
         </div>
         <div className={style.mainBenefits}>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            ◆副業許可申請詳細◆
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            対象者
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            当社社員全員
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            添付されている資料をダウンロードしていただき
-            記載後に岩本までDMにて送付してください。
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            提出期日
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            副業が決まり次第随時
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            注意事項
-          </Typography>
-          <Typography gutterBottom variant="h5" component="div" sx={{}}>
-            副業される方は年末調整の関係も有るため、必ず申請をお願い致します
-            副業される方は税務署へ開業届の提出をしましょう
-            副業される方は必ず確定申告をしましょう
-            確定申告や開業申請など不明点あればお問合せください
-          </Typography>
+          <div className={style.sideBusiness}>
+            <Box className="side-business-title">
+              <img src={SideBusinessImg} alt="" className="side-business-img" />
+              <Typography
+                gutterBottom
+                variant="h1"
+                component="div"
+                sx={{
+                  fontWeight: "bold",
+                  color: "#fff",
+                }}
+                className="side-business-title-text"
+              >
+                SideBusiness
+              </Typography>
+            </Box>
+            {explanations.map((explanation) => (
+              <Box key={explanation.title} sx={{ mt: 5 }}>
+                <Typography
+                  gutterBottom
+                  variant="h5"
+                  component="div"
+                  sx={{
+                    fontWeight: "bold",
+                    borderBottom: 1,
+                    display: "inline-block",
+                  }}
+                >
+                  {explanation.title}
+                </Typography>
+
+                <Typography
+                  gutterBottom
+                  variant="body1"
+                  component="div"
+                  sx={{}}
+                >
+                  {explanation.explanation}
+                </Typography>
+              </Box>
+            ))}
+          </div>
         </div>
       </div>
     </>
