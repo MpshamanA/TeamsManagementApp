@@ -30,3 +30,10 @@ export type Branch = {
   address: string;
   imgUrl?: string;
 };
+
+export type MailSendInfo = {
+  name: string;
+  bookName: string;
+  rentalDate: Date;
+  returnDate: Date;
+};
