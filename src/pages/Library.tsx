@@ -2,14 +2,16 @@ import React, { useContext } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
+import { useSendMail } from "../hooks/useSendMail";
 
 import { explanations } from "../config/LibraryConfig/explanation";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { manuContext } from "../Store";
 import "../css/library.css";
-import { MailSendInfo } from "../Type";
 
+import { MailSendInfo } from "../Type";
+import { SendMailOutput } from "../hooks/useSendMail";
 import books from "../images/LibraryImg/books.jpg";
 
 import Box from "@mui/material/Box";
@@ -28,37 +30,13 @@ const Library: React.FC<RouteComponentProps> = (props) => {
     formState: { errors },
   } = useForm<MailSendInfo>();
 
-  const sendMail = async (data: MailSendInfo) => {
-    //formで入力された情報を取得
-    const { name, bookName, rentalDate, returnDate } = data;
-    //envファイルから認証情報を取得
-    const userID = process.env.REACT_APP_EMAILJS_USER_ID;
-    const serviceID = process.env.REACT_APP_EMAILJS_SERVICE_ID;
-    const templateID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID;
-    console.log(process.env.REACT_APP_EMAILJS_USER_ID);
-    console.log(serviceID);
-    console.log(templateID);
-    console.log();
-
-    if (userID && serviceID && templateID) {
-      console.log("in if");
-      // emailJS初期化
-      init(userID);
-      const params = {
-        name: name,
-        bookName: bookName,
-        rentalDate: rentalDate,
-        returnDate: returnDate,
-      };
-      console.log(params);
-
-      try {
-        await send(serviceID, templateID, params);
-        alert("送信成功");
-      } catch (error) {
-        // 送信失敗したらalertで表示
-        alert(`送信失敗：${error}`);
-      }
+  //メール送信後の結果を取得しアラートに出力
+  const useGetResultCode = (data: MailSendInfo) => {
+    const output: SendMailOutput = useSendMail(data);
+    if (output.resultCode === 0) {
+      alert("送信成功");
+    } else {
+      alert("送信失敗");
     }
   };
   return (
@@ -117,7 +95,7 @@ const Library: React.FC<RouteComponentProps> = (props) => {
             ))}
             ---------------------------------- メール送信
             ----------------------------------
-            <form onSubmit={handleSubmit(sendMail)}>
+            <form onSubmit={handleSubmit(useGetResultCode)}>
               <ul>
                 <li>
                   <input
