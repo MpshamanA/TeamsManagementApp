@@ -8,7 +8,7 @@ import { explanations } from "../config/LibraryConfig/explanation";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
 import { manuContext } from "../Store";
-import "../css/library.css";
+import "../css/library.scss";
 
 import { MailSendInfo } from "../Type";
 import { SendMailOutput } from "../hooks/useSendMail";
@@ -16,8 +16,7 @@ import books from "../images/LibraryImg/books.jpg";
 
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-
-import { init, send } from "@emailjs/browser";
+import TextField from "@mui/material/TextField";
 
 import style from "../css/common.module.scss";
 
@@ -93,48 +92,74 @@ const Library: React.FC<RouteComponentProps> = (props) => {
                 </Typography>
               </Box>
             ))}
-            ---------------------------------- メール送信
-            ----------------------------------
             <form onSubmit={handleSubmit(useGetResultCode)}>
-              <ul>
-                <li>
-                  <input
-                    placeholder="名前"
-                    {...register("name", {
-                      required: true,
-                    })}
-                  ></input>
-                </li>
-                <li>
-                  <input
-                    placeholder="購入して欲しい書籍名"
-                    {...register("bookName", {
-                      required: true,
-                    })}
-                  ></input>
-                </li>
-                <li>
-                  <input
-                    type="date"
-                    placeholder="貸し出し希望日"
-                    {...register("rentalDate", {
-                      required: true,
-                    })}
-                  ></input>
-                </li>
-                <li>
-                  <input
-                    placeholder="返却希望日"
-                    type="date"
-                    {...register("returnDate", {
-                      required: true,
-                    })}
-                  ></input>
-                </li>
-                <li>
-                  <button type="submit">送信</button>
-                </li>
-              </ul>
+              <Box className="send-mail-box-img">
+                <Box className="send-mail-box" sx={{}}>
+                  <Typography
+                    gutterBottom
+                    variant="h5"
+                    component="div"
+                    className="send-mail-box-title"
+                    sx={{}}
+                  >
+                    図書貸し出し申請
+                  </Typography>
+                  <Box
+                    sx={{
+                      // border: "solid",
+                      display: "flex",
+                      flexDirection: "column",
+                      width: "20%",
+                      p: 5,
+                      alignItems: "center",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "100%",
+                        mb: 2,
+                      }}
+                    >
+                      <p>
+                        お名前 <span>必須</span>
+                      </p>
+                      <input
+                        placeholder="名前"
+                        {...register("name", {
+                          required: true,
+                        })}
+                      ></input>
+                    </Box>
+                    購入して欲しい書籍名 必須
+                    <input
+                      placeholder="購入して欲しい書籍名"
+                      {...register("bookName", {
+                        required: true,
+                      })}
+                    ></input>
+                    貸し出し希望日 必須
+                    <input
+                      type="date"
+                      placeholder="貸し出し希望日"
+                      {...register("rentalDate", {
+                        required: true,
+                      })}
+                    ></input>
+                    返却希望日 必須
+                    <input
+                      placeholder="返却希望日"
+                      type="date"
+                      {...register("returnDate", {
+                        required: true,
+                      })}
+                    ></input>
+                    <button type="submit">送信</button>
+                  </Box>
+                </Box>
+              </Box>
             </form>
           </div>
         </div>
