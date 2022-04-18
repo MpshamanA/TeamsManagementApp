@@ -15,10 +15,11 @@ import { SendMailOutput } from "../hooks/useSendMail";
 import books from "../images/LibraryImg/books.jpg";
 
 import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 
 import style from "../css/common.module.scss";
+import { hover } from "@testing-library/user-event/dist/hover";
 
 const Library: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);
@@ -208,7 +209,14 @@ const Library: React.FC<RouteComponentProps> = (props) => {
                         })}
                       ></input>
                     </Box>
-                    <button type="submit">送信</button>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      type="submit"
+                      sx={{ backgroundColor: "#eee", color: "#000" }}
+                    >
+                      送信
+                    </Button>
                   </Box>
                 </Box>
               </Box>
