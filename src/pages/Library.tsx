@@ -106,7 +106,6 @@ const Library: React.FC<RouteComponentProps> = (props) => {
                   </Typography>
                   <Box
                     sx={{
-                      // border: "solid",
                       display: "flex",
                       flexDirection: "column",
                       width: "20%",
@@ -123,6 +122,9 @@ const Library: React.FC<RouteComponentProps> = (props) => {
                         mb: 2,
                       }}
                     >
+                      {errors.name && (
+                        <p style={{ color: "red" }}>お名前を入力してください</p>
+                      )}
                       <p>
                         お名前 <span>必須</span>
                       </p>
@@ -133,29 +135,79 @@ const Library: React.FC<RouteComponentProps> = (props) => {
                         })}
                       ></input>
                     </Box>
-                    購入して欲しい書籍名 必須
-                    <input
-                      placeholder="購入して欲しい書籍名"
-                      {...register("bookName", {
-                        required: true,
-                      })}
-                    ></input>
-                    貸し出し希望日 必須
-                    <input
-                      type="date"
-                      placeholder="貸し出し希望日"
-                      {...register("rentalDate", {
-                        required: true,
-                      })}
-                    ></input>
-                    返却希望日 必須
-                    <input
-                      placeholder="返却希望日"
-                      type="date"
-                      {...register("returnDate", {
-                        required: true,
-                      })}
-                    ></input>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "100%",
+                        mb: 2,
+                      }}
+                    >
+                      {errors.bookName && (
+                        <p style={{ color: "red" }}>書籍名を入力してください</p>
+                      )}
+                      <p>
+                        購入して欲しい書籍名<span>必須</span>
+                      </p>
+                      <input
+                        placeholder="購入して欲しい書籍名"
+                        {...register("bookName", {
+                          required: true,
+                        })}
+                      ></input>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "100%",
+                        mb: 2,
+                      }}
+                    >
+                      {errors.rentalDate && (
+                        <p style={{ color: "red" }}>
+                          貸し出し希望日を入力してください
+                        </p>
+                      )}
+
+                      <p>
+                        貸し出し希望日 <span>必須</span>
+                      </p>
+                      <input
+                        type="date"
+                        placeholder="貸し出し希望日"
+                        {...register("rentalDate", {
+                          required: true,
+                        })}
+                      ></input>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "flex-start",
+                        width: "100%",
+                        mb: 2,
+                      }}
+                    >
+                      {errors.returnDate && (
+                        <p style={{ color: "red" }}>
+                          返却希望日を入力してください
+                        </p>
+                      )}
+                      <p>
+                        返却希望日 <span>必須</span>
+                      </p>
+                      <input
+                        placeholder="返却希望日"
+                        type="date"
+                        {...register("returnDate", {
+                          required: true,
+                        })}
+                      ></input>
+                    </Box>
                     <button type="submit">送信</button>
                   </Box>
                 </Box>
