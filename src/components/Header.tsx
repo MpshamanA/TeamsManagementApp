@@ -73,7 +73,8 @@ export const Header: React.FC<PropType> = ({ history }) => {
               {authDataContext.authData?.email}
             </Typography>
           )}
-          <NavLink exact to={"/editProfile"} className="link-bar-none">
+          {/* 後プロフィール編集実装 */}
+          {/* <NavLink exact to={"/editProfile"} className="link-bar-none">
             <Button
               variant="contained"
               size="small"
@@ -82,7 +83,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
             >
               Edit Profile
             </Button>
-          </NavLink>
+          </NavLink> */}
           <Button
             variant="contained"
             size="small"

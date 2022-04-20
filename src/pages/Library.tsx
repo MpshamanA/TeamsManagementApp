@@ -19,7 +19,6 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import style from "../css/common.module.scss";
-import { hover } from "@testing-library/user-event/dist/hover";
 
 const Library: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);

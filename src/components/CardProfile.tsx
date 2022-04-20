@@ -18,7 +18,7 @@ import BadgeOutlinedIcon from "@mui/icons-material/BadgeOutlined";
 import DirectionsRunOutlinedIcon from "@mui/icons-material/DirectionsRunOutlined";
 import ThumbUpOutlinedIcon from "@mui/icons-material/ThumbUpOutlined";
 
-import NoImage from "../images/noImage.png";
+import Icon from "../images/icon.png";
 import { ProgrammingLanguages } from "../Type";
 
 type Props = {
@@ -53,13 +53,23 @@ export const CardProfile: React.FC<Props> = ({
           sx={{
             background:
               "linear-gradient(225deg,rgb(66, 255, 230), rgb(155, 255, 213),rgb(66, 255, 183))",
-            pt: 7,
-            pb: 7,
+            pt: 2,
+            pb: 2,
             boxShadow: 3,
             // m: 1,
           }}
         >
-          <img src={NoImage} alt="" />
+          <img
+            src={Icon}
+            alt=""
+            style={{
+              width: "30%",
+              backgroundColor: "#fff",
+              borderRadius: "50%",
+              padding: "5%",
+              boxShadow: "0 0 15px #333",
+            }}
+          />
         </Card>
         <CardContent sx={{ pb: 0 }}>
           <Grid>

@@ -4,7 +4,7 @@ import CardContent from "@mui/material/CardContent";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
-import NoImage from "../images/noImage.png";
+import Icon from "../images/icon.png";
 
 type Props = {
   userName: string;
@@ -22,10 +22,21 @@ export const CardItem: React.FC<Props> = ({ userName, position }) => {
       sx={{
         color: "rgb(25, 80, 117)",
         m: "10px",
-        width: "420px",
+        width: "400px",
       }}
     >
-      <CardContent sx={{ display: "flex", padding: "24px" }}>
+      <CardContent
+        sx={{ display: "flex", padding: "24px", alignItems: "center" }}
+      >
+        <CardContent sx={{ p: "24px" }}>
+          <CardMedia
+            component="img"
+            height="150"
+            width="150"
+            image={Icon}
+            alt="no image"
+          />
+        </CardContent>
         <CardContent>
           <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
             {position}
@@ -33,15 +44,6 @@ export const CardItem: React.FC<Props> = ({ userName, position }) => {
           <Typography variant="h5" component="div" sx={{ fontWeight: "bold" }}>
             {userName}
           </Typography>
-        </CardContent>
-        <CardContent sx={{ p: "24px" }}>
-          <CardMedia
-            component="img"
-            height="150"
-            width="150"
-            image={NoImage}
-            alt="no image"
-          />
         </CardContent>
       </CardContent>
     </Card>
