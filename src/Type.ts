@@ -27,6 +27,7 @@ export type ProgrammingLanguages = {
 export type Branch = {
   id: number;
   branch: string;
+  zipcode: string;
   address: string;
   imgUrl?: string;
 };

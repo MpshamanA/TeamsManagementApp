@@ -47,86 +47,83 @@ const App: React.FC<RouteComponentProps> = (props) => {
         <Header history={props.history} />
       </div>
       <div className={style.mainTeams}>
-        <Grid sx={{ textAlign: "center" }}>
-          <Card
-            sx={{
-              mb: "10px",
-              padding: "20px",
-              minWidth: "1200px",
-              justify: "center",
-              textAlign: "center",
-              color: "rgb(25, 80, 117)",
-            }}
+        <Card
+          sx={{
+            mb: "10px",
+            padding: "20px",
+            color: "rgb(25, 80, 117)",
+            boxShadow: "0 0 10px #aaa",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
+          <img src={icon} className="App-logo" alt="icon" />
+          <Typography
+            gutterBottom
+            sx={{ fontWeight: "bold", fontSize: "3rem" }}
           >
-            <img src={icon} className="App-logo" alt="icon" />
-            <Typography
-              gutterBottom
-              variant="h3"
-              component="div"
-              sx={{ fontWeight: "bold" }}
-            >
-              フューチャー・スクウェア株式会社
-            </Typography>
-            <Typography gutterBottom variant="h4" component="div">
-              Future SQUARE,Inc.
-            </Typography>
-            <Typography gutterBottom variant="h4" component="div">
-              代表取締役 岩本 雄太
-            </Typography>
-          </Card>
+            フューチャー・スクウェア株式会社
+          </Typography>
+          <Typography gutterBottom variant="h4" component="div">
+            Future SQUARE,Inc.
+          </Typography>
+          <Typography gutterBottom variant="h4" component="div">
+            代表取締役 岩本 雄太
+          </Typography>
+        </Card>
 
-          <Box sx={{ mt: "30px" }}>
-            <Grid
-              container
-              rowSpacing={3}
-              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
-            >
-              {branchs.map((branch) => (
-                <Grid item xs={6} key={branch.id}>
-                  <Card
-                    className="card-color"
+        <Box
+          sx={{
+            mt: "30px",
+            display: "flex",
+            flexWrap: "wrap",
+            gap: "20px 20px",
+            justifyContent: "center",
+          }}
+        >
+          {branchs.map((branch) => (
+            <Box key={branch.id}>
+              <Card
+                className="card-color"
+                sx={{
+                  padding: "20px",
+                  color: "rgb(25, 80, 117)",
+                  boxShadow: "0 0 10px #aaa",
+                  width: "450px",
+                }}
+              >
+                <Box sx={{ display: "flex" }}>
+                  <img src={branch.imgUrl} className="townImage" alt="icon" />
+                  <Box
+                    component="div"
                     sx={{
-                      padding: "20px",
-                      justify: "center",
-                      textAlign: "center",
-                      color: "rgb(25, 80, 117)",
+                      display: "flex",
+                      alignItems: "center",
                     }}
                   >
-                    <Grid sx={{ display: "flex" }}>
-                      <img
-                        src={branch.imgUrl}
-                        className="townImage"
-                        alt="icon"
-                      />
-                      <Box
+                    <Box sx={{ ml: "10px" }}>
+                      <Typography
+                        gutterBottom
+                        variant="h5"
                         component="div"
-                        sx={{
-                          display: "flex",
-                          justifyContent: "center",
-                          alignItems: "center",
-                        }}
+                        sx={{ fontWeight: "bold" }}
                       >
-                        <Box>
-                          <Typography
-                            gutterBottom
-                            variant="h5"
-                            component="div"
-                            sx={{ fontWeight: "bold" }}
-                          >
-                            {branch.branch}
-                          </Typography>
-                          <Typography gutterBottom variant="h6" component="div">
-                            {branch.address}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </Grid>
-                  </Card>
-                </Grid>
-              ))}
-            </Grid>
-          </Box>
-        </Grid>
+                        {branch.branch}
+                      </Typography>
+                      <Typography gutterBottom variant="h6" component="div">
+                        {branch.zipcode}
+                      </Typography>
+                      <Typography gutterBottom variant="h6" component="div">
+                        {branch.address}
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Box>
+              </Card>
+            </Box>
+          ))}
+        </Box>
       </div>
     </div>
   );
