@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import style from "../css/common.module.scss";
 import "../css/referral.css";
 
@@ -16,6 +16,9 @@ import Box from "@mui/material/Box";
 
 const Referral: React.FC<RouteComponentProps> = (prop) => {
   const state = useContext(manuContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className={!state.sideToggle ? style.grid : style.gridSideMin}>

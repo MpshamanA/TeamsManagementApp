@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import { RouteComponentProps } from "react-router-dom";
 
@@ -16,6 +16,9 @@ import "../css/sideBusiness.css";
 
 const SideBusiness: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className={!state.sideToggle ? style.grid : style.gridSideMin}>

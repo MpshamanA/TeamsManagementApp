@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { RouteComponentProps } from "react-router-dom";
 
 import { useForm } from "react-hook-form";
@@ -23,6 +23,9 @@ import style from "../css/common.module.scss";
 const Library: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const {
     handleSubmit,
     register,

@@ -1,8 +1,6 @@
-import { useState, createContext, useContext } from "react";
+import { useContext, useLayoutEffect } from "react";
 import "./css/App.css";
 import style from "./css/common.module.scss";
-
-import { useLayoutEffect } from "react";
 
 import { RouteComponentProps } from "react-router-dom";
 
@@ -18,6 +16,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
+import { WindowOutlined } from "@mui/icons-material";
 
 const App: React.FC<RouteComponentProps> = (props) => {
   const auth: Auth = getAuth();
@@ -25,6 +24,7 @@ const App: React.FC<RouteComponentProps> = (props) => {
 
   //ユーザー判定 ユーザー情報を保持していない場合新規登録画面へ
   useLayoutEffect(() => {
+    window.scrollTo(0, 0);
     //メモリリーク回避：非同期処理が完了する前にコンポーネントがアンマウントされると、ステートは更新されない
     let unmounted: boolean = false;
 
@@ -47,32 +47,34 @@ const App: React.FC<RouteComponentProps> = (props) => {
         <Header history={props.history} />
       </div>
       <div className={style.mainTeams}>
-        <Card
-          sx={{
-            mb: "10px",
-            padding: "20px",
-            color: "rgb(25, 80, 117)",
-            boxShadow: "0 0 10px #aaa",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-          }}
-        >
-          <img src={icon} className="App-logo" alt="icon" />
-          <Typography
-            gutterBottom
-            sx={{ fontWeight: "bold", fontSize: "3rem" }}
+        <Box sx={{ display: "flex", justifyContent: "center" }}>
+          <Card
+            sx={{
+              mb: "10px",
+              padding: "20px",
+              color: "rgb(25, 80, 117)",
+              boxShadow: "0 0 10px #aaa",
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              width: "960px",
+            }}
           >
-            フューチャー・スクウェア株式会社
-          </Typography>
-          <Typography gutterBottom variant="h4" component="div">
-            Future SQUARE,Inc.
-          </Typography>
-          <Typography gutterBottom variant="h4" component="div">
-            代表取締役 岩本 雄太
-          </Typography>
-        </Card>
-
+            <img src={icon} className="App-logo" alt="icon" />
+            <Typography
+              gutterBottom
+              sx={{ fontWeight: "bold", fontSize: "3rem" }}
+            >
+              フューチャー・スクウェア株式会社
+            </Typography>
+            <Typography gutterBottom variant="h4" component="div">
+              Future SQUARE,Inc.
+            </Typography>
+            <Typography gutterBottom variant="h4" component="div">
+              代表取締役 岩本 雄太
+            </Typography>
+          </Card>
+        </Box>
         <Box
           sx={{
             mt: "30px",

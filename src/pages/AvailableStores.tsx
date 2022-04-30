@@ -44,6 +44,7 @@ const AvailableStores: React.FC<RouteComponentProps> = (props) => {
 
   //storesに変更があった時にレンダリングされる
   useEffect(() => {
+    window.scrollTo(0, 0);
     //メモリリーク回避：非同期処理が完了する前にコンポーネントがアンマウントされると、ステートは更新されない
     let unmounted: boolean = false;
     const GetStores = async () => {

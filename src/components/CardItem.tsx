@@ -11,22 +11,21 @@ type Props = {
   position: string;
 };
 export const CardItem: React.FC<Props> = ({ userName, position }) => {
-  const bull = (
-    <Box
-      component="span"
-      sx={{ display: "inline-block", mx: "2px", transform: "scale(0.8)" }}
-    ></Box>
-  );
   return (
     <Card
       sx={{
         color: "rgb(25, 80, 117)",
         m: "10px",
         width: "400px",
+        boxShadow: "0 0 10px #aaa",
       }}
     >
       <CardContent
-        sx={{ display: "flex", padding: "24px", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          padding: "24px",
+          alignItems: "center",
+        }}
       >
         <CardContent sx={{ p: "24px" }}>
           <CardMedia

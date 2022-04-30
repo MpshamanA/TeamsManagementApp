@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import style from "../css/common.module.scss";
 import "../css/referral.css";
 
@@ -10,6 +10,9 @@ import { manuContext } from "../Store";
 
 const Qa: React.FC<RouteComponentProps> = (prop) => {
   const state = useContext(manuContext);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div>
       <div className={!state.sideToggle ? style.grid : style.gridSideMin}>

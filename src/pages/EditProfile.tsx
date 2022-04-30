@@ -49,6 +49,7 @@ const EditProfile: React.FC<RouteComponentProps> = (props) => {
 
   //uidはStoreで管理するように修正が必要↓
   useEffect(() => {
+    window.scrollTo(0, 0);
     onAuthStateChanged(auth, (currentUser) => {
       authData.setIsAuthData(currentUser);
       const getUserName = async () => {

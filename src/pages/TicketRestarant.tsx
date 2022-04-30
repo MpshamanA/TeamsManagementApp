@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 import "../css/TicketRestarant.css";
 import style from "../css/common.module.scss";
@@ -23,7 +23,9 @@ import Box from "@mui/material/Box";
 
 const TicketRestarant: React.FC<RouteComponentProps> = (props) => {
   const state = useContext(manuContext);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <>
       <div className={!state.sideToggle ? style.grid : style.gridSideMin}>

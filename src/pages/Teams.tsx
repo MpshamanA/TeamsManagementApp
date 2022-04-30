@@ -4,6 +4,8 @@ import React, { useState, useEffect, useContext } from "react";
 
 import { RouteComponentProps, NavLink } from "react-router-dom";
 
+import Box from "@mui/material/Box";
+
 import { CardItem } from "../components/CardItem";
 import { Header } from "../components/Header";
 import { Side } from "../components/Side";
@@ -23,6 +25,7 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
 
   //登録されてるユーザーを取得
   useEffect(() => {
+    window.scrollTo(0, 0);
     let unmounted: boolean = false;
 
     const GetUsers = async () => {
@@ -46,16 +49,18 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
         <Header history={prop.history} />
       </div>
       <div className={style.mainTeams}>
-        {users.map((user) => (
-          <NavLink
-            exact
-            to={`/teams/${user.id}`}
-            className="link-bar-none"
-            key={user.id}
-          >
-            <CardItem userName={user.name} position={user.position} />
-          </NavLink>
-        ))}
+        <Box sx={{ display: "flex", flexWrap: "wrap" }}>
+          {users.map((user) => (
+            <NavLink
+              exact
+              to={`/teams/${user.id}`}
+              className="link-bar-none"
+              key={user.id}
+            >
+              <CardItem userName={user.name} position={user.position} />
+            </NavLink>
+          ))}
+        </Box>
       </div>
     </div>
   );
