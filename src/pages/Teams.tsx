@@ -1,6 +1,6 @@
 import style from "../css/common.module.scss";
 
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useLayoutEffect } from "react";
 
 import { RouteComponentProps, NavLink } from "react-router-dom";
 
@@ -24,7 +24,7 @@ const Teams: React.FC<RouteComponentProps> = (prop) => {
   const state = useContext(manuContext);
 
   //登録されてるユーザーを取得
-  useEffect(() => {
+  useLayoutEffect(() => {
     window.scrollTo(0, 0);
     let unmounted: boolean = false;
 

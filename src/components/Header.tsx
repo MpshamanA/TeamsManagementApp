@@ -14,7 +14,10 @@ import { onAuthStateChanged, Auth, getAuth } from "firebase/auth";
 import { signOut } from "firebase/auth";
 import { manuContext, authContext } from "../Store";
 
+import style from "../css/common.module.scss";
+
 import * as H from "history";
+import { StayCurrentLandscape } from "@mui/icons-material";
 
 type PropType = {
   history: H.History;
@@ -55,6 +58,7 @@ export const Header: React.FC<PropType> = ({ history }) => {
             aria-label="menu"
             sx={{ mr: 2, color: "#000" }}
             onClick={handleClick}
+            className={style.hidden}
           >
             <MenuIcon />
           </IconButton>

@@ -1,110 +1,285 @@
-.grid {
-  display: grid;
-  grid-template-columns: 240px 1fr;
-  grid-template-rows: 70px 1fr;
-  .header {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    max-width: 100%;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-    margin-left: 2px;
-  }
-  .side {
-    position: sticky;
-    top: 0px;
-  }
-  .mainTeams {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 0 10px 10px 10px;
-    min-height: 100vh;
-    border-radius: 20px;
-  }
+// PC
+@media only screen and (min-width: 1024px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr;
+    .header {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      max-width: 100%;
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+      margin-left: 2px;
+      .hidden {
+        visibility: hidden;
+      }
+    }
+    .side {
+      position: sticky;
+      top: 75px;
+    }
+    .mainTeams {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 0 10px 10px 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+    }
 
-  .mainItemList {
-    text-align: center;
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 10px;
-    min-height: 100vh;
-    border-radius: 20px;
-    background: linear-gradient(
-      45deg,
-      rgba(57, 85, 50, 0.8),
-      rgba(38, 102, 67, 0.8)
-    );
+    .mainItemList {
+      text-align: center;
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      background: linear-gradient(
+        45deg,
+        rgba(57, 85, 50, 0.8),
+        rgba(38, 102, 67, 0.8)
+      );
+    }
+    .mainBenefits {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      .referral {
+        text-align: center;
+      }
+      .sideBusiness {
+        text-align: center;
+      }
+      .library {
+        text-align: center;
+      }
+    }
   }
-  .mainBenefits {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 10px;
-    min-height: 100vh;
-    border-radius: 20px;
-    .referral {
-      text-align: center;
+  .gridSideMin {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr;
+    .header {
+      grid-column: 2 / 3;
+      grid-row: 1 / 2;
+      max-width: 100%;
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+      margin-left: 2px;
+      .hidden {
+        visibility: hidden;
+      }
     }
-    .sideBusiness {
-      text-align: center;
+    .side {
+      position: sticky;
+      top: 75px;
     }
-    .library {
+    .mainTeams {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 0 10px 10px 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+    }
+
+    .mainItemList {
       text-align: center;
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      background: linear-gradient(
+        45deg,
+        rgba(57, 85, 50, 0.8),
+        rgba(38, 102, 67, 0.8)
+      );
+    }
+    .mainBenefits {
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      .referral {
+        text-align: center;
+      }
+      .sideBusiness {
+        text-align: center;
+      }
+      .library {
+        text-align: center;
+      }
     }
   }
 }
-.gridSideMin {
-  display: grid;
-  grid-template-columns: 70px 1fr;
-  grid-template-rows: 70px 1fr;
-  .header {
-    grid-column: 2 / 3;
-    grid-row: 1 / 2;
-    max-width: 100%;
-    position: sticky;
-    top: 0px;
-    z-index: 1;
-    margin-left: 2px;
-  }
-  .side {
-    position: sticky;
-    top: 0px;
-  }
-  .mainTeams {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 0 10px 10px 10px;
-    min-height: 100vh;
-    border-radius: 20px;
-  }
+// タブレット
+@media only screen and (max-width: 1024px) {
+  .grid {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr;
+    .header {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      max-width: 100%;
+      position: sticky;
+      top: 0px;
+      order: 1;
+      margin-left: 2px;
+      z-index: 1;
+    }
+    .side {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      position: sticky;
+      top: 0px;
+      background-color: #fff;
+      z-index: 1;
+      animation-name: fadeLeftAnime;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      opacity: 0;
+    }
+    @keyframes fadeLeftAnime {
+      from {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
 
-  .mainItemList {
-    text-align: center;
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 10px;
-    min-height: 100vh;
-    border-radius: 20px;
-    background: linear-gradient(
-      45deg,
-      rgba(57, 85, 50, 0.8),
-      rgba(38, 102, 67, 0.8)
-    );
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    .mainTeams {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      margin: 0 10px 10px 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      pointer-events: none;
+      opacity: 0.6;
+      filter: blur(3px);
+      z-index: 0;
+      transition: 0.5s;
+    }
+
+    .mainItemList {
+      text-align: center;
+      grid-column: 2 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      z-index: 0;
+      background: linear-gradient(
+        45deg,
+        rgba(57, 85, 50, 0.8),
+        rgba(38, 102, 67, 0.8)
+      );
+    }
+    .mainBenefits {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.6;
+      filter: blur(3px);
+      z-index: 0;
+      transition: 0.5s;
+      .referral {
+        text-align: center;
+      }
+      .sideBusiness {
+        text-align: center;
+      }
+      .library {
+        text-align: center;
+      }
+    }
   }
-  .mainBenefits {
-    grid-column: 2 / 3;
-    grid-row: 2 / 3;
-    margin: 10px;
-    min-height: 100vh;
-    border-radius: 20px;
-    .referral {
-      text-align: center;
+  .gridSideMin {
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    grid-template-rows: 70px 1fr;
+    .header {
+      grid-column: 1 / 3;
+      grid-row: 1 / 2;
+      max-width: 100%;
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+      margin-left: 2px;
     }
-    .sideBusiness {
-      text-align: center;
+    .side {
+      grid-column: 1 / 2;
+      grid-row: 2 / 3;
+      position: sticky;
+      top: 0px;
+      z-index: 1;
+      animation-name: fadeoutLeftAnime;
+      animation-duration: 0.5s;
+      animation-fill-mode: forwards;
+      opacity: 1;
     }
-    .library {
+    @keyframes fadeoutLeftAnime {
+      from {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      to {
+        opacity: 0;
+        transform: translateX(-100px);
+      }
+    }
+    .mainTeams {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      margin: 0 10px 10px 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      z-index: 0;
+    }
+
+    .mainItemList {
       text-align: center;
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      border-radius: 20px;
+      z-index: 0;
+      background: linear-gradient(
+        45deg,
+        rgba(57, 85, 50, 0.8),
+        rgba(38, 102, 67, 0.8)
+      );
+    }
+    .mainBenefits {
+      grid-column: 1 / 3;
+      grid-row: 2 / 3;
+      margin: 10px;
+      min-height: 100vh;
+      z-index: 0;
+      border-radius: 20px;
+      .referral {
+        text-align: center;
+      }
+      .sideBusiness {
+        text-align: center;
+      }
+      .library {
+        text-align: center;
+      }
     }
   }
 }

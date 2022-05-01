@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ReactDOM from "react-dom";
 
 import "./index.css";
@@ -21,6 +21,8 @@ import {
   BenefitsStoreContext,
   AuthDataStoreContext,
 } from "./Store";
+
+import { manuContext } from "./Store";
 
 //routeの設定
 ReactDOM.render(

@@ -1,4 +1,4 @@
-import { useContext, useLayoutEffect } from "react";
+import { useContext, useLayoutEffect, memo } from "react";
 import "./css/App.css";
 import style from "./css/common.module.scss";
 
